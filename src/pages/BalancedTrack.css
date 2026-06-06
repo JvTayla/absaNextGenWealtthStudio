@@ -1,0 +1,89 @@
+/* ─────────────────────────────────────────────
+   BalancedTrack.css
+   Sage / green theme overrides for the Balanced Wealth Vision
+   Shared milestone/goal/nudge styles live in GlobalCitizenTrack.css
+───────────────────────────────────────────── */
+
+/* Stat value in sage green instead of absa-red */
+.bw-stat-value {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sage) !important;
+}
+
+/* Moodboard green tint */
+.bw-moodboard {
+  background: linear-gradient(135deg, #e8f5e4, var(--cream-dark)) !important;
+}
+
+/* Rec card sage accent */
+.bw-rec {
+  border-left: 4px solid var(--sage);
+}
+
+/* Badge sage variant */
+.badge-sage {
+  background: rgba(139, 175, 136, 0.15);
+  color: var(--sage);
+  border: 1px solid rgba(139, 175, 136, 0.4);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* 5-year outcomes preview */
+.bw-outcomes {
+  padding: 1.5rem;
+}
+
+.bw-outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.bw-outcome-card {
+  padding: 1.1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.bw-outcome-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.bw-outcome-value {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.bw-outcome-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.bw-outcome-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .bw-outcomes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .bw-outcomes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

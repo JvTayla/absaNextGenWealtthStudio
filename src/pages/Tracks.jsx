@@ -50,7 +50,7 @@ const TRACKS = [
     bg: 'linear-gradient(135deg, #E8F5E4 0%, #C8E8C0 100%)',
     border: 'var(--sage)',
     path: '/tracks/balanced',
-    available: false,
+    available: true,
   },
 ];
 

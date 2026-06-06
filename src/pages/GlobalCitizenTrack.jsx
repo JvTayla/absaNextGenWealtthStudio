@@ -194,7 +194,7 @@ function buildNudges(profile, takeHome, disposable) {
   return [
     {
       icon: "💡",
-      text: `You have ${formatZAR(profile.savings.emergencyFund)} in savings — moving some into a TFSA shelters all future growth from tax permanently.`,
+      text: `You have ${formatZAR(profile.savings.emergencyFund)} in savings! Moving some into a TFSA shelters all future growth from tax permanently.`,
     },
     {
       icon: "📊",

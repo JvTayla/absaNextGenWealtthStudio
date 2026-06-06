@@ -13,6 +13,7 @@ import Snapshot from "./pages/Snapshot";
 import Tracks from "./pages/Tracks";
 import GlobalCitizenTrack from "./pages/GlobalCitizenTrack";
 import HomeownerTrack from "./pages/HomeownerTrack";
+import BalancedTrack from "./pages/BalancedTrack";
 import Studio from "./pages/Studio";
 import CarStudio from "./pages/CarStudio";
 import Learn from "./pages/Learn";
@@ -58,6 +59,7 @@ export default function App() {
                 element={<GlobalCitizenTrack />}
               />
               <Route path="/tracks/homeowner" element={<HomeownerTrack />} />
+              <Route path="/tracks/balanced" element={<BalancedTrack />} />
               <Route path="/studio" element={<Studio />} />
               <Route path="/studio/car-comparison" element={<CarStudio />} />
               <Route path="/learn" element={<Learn />} />

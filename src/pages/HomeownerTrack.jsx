@@ -4,7 +4,7 @@ import { useProfile } from "../context/UserProfileContext";
 import { formatZAR } from "../utils/finance";
 import "./HomeownerTrack.css";
 
-// Homeowner Track — 5-year roadmap to first property ownership in South Africa
+// Homeowner Track which outlines a 5-year roadmap to first property ownership in South Africa
 // Follows same MilestoneCard pattern as GlobalCitizenTrack
 // Color theme: ABSA red / warm tones
 
@@ -25,7 +25,7 @@ const MILESTONES = [
         id: "h1b",
         label: "Reduce credit card balances below 30% of your limit",
         detail:
-          "Credit utilisation above 30% meaningfully lowers your credit score. If your card limit is R50,000, keep balances under R15,000 and pay in full monthly where possible. Store credit accounts (Woolworths, Edgars) carry 20–24% interest — close them as you pay them off.",
+          "Credit utilisation above 30% meaningfully lowers your credit score. If your card limit is R50,000, keep balances under R15,000 and pay in full monthly where possible. Store credit accounts (Woolworths, Edgars) carry 20-24% interest so please close them as you pay them off.",
       },
       {
         id: "h1c",
@@ -60,7 +60,7 @@ const MILESTONES = [
         label:
           "Get a formal home loan pre-qualification from ABSA or BetterBond",
         detail:
-          "Pre-qualification tells you exactly how much you can borrow before you start house-hunting — it takes 15 minutes online and gives you real negotiating power with sellers. BetterBond submits to multiple banks simultaneously and finds you the best rate. It costs nothing.",
+          "Pre-qualification tells you exactly how much you can borrow before you start house-hunting! It takes 15 minutes online and gives you real negotiating power with sellers. BetterBond submits to multiple banks simultaneously and finds you the best rate. It costs nothing.",
       },
       {
         id: "h2c",
@@ -90,7 +90,7 @@ const MILESTONES = [
         label:
           "Budget for transfer duty (charged on properties above R1,100,000)",
         detail:
-          "Transfer duty is a government tax on property purchases above R1.1M. On a R1.6M property: R20,900. On a R2M property: R50,900. On a R2.5M property: R106,400. This is paid upfront and is NOT included in your bond — you need this cash in addition to your deposit.",
+          "Transfer duty is a government tax on property purchases above R1.1M. On a R1.6M property: R20,900. On a R2M property: R50,900. On a R2.5M property: R106,400. This is paid upfront and is NOT included in your bond so you will need this cash in addition to your deposit.",
       },
       {
         id: "h3b",
@@ -124,30 +124,30 @@ const MILESTONES = [
         id: "h4a",
         label: "Submit an Offer to Purchase (OTP) with the right conditions",
         detail:
-          "An OTP is a legally binding contract. Always include a condition making it subject to bond approval and a satisfactory property inspection. Never sign an OTP without reading every clause. For your first property, ask a property attorney to review it — the R1,500 fee is worth it.",
+          "An OTP is a legally binding contract. Always include a condition making it subject to bond approval and a satisfactory property inspection. Never sign an OTP without reading every clause. For your first property, ask a property attorney to review it , the R1,500 fee is worth it.",
       },
       {
         id: "h4b",
         label: "Apply to at least 3 banks simultaneously via BetterBond",
         detail:
-          "Apply to ABSA, Nedbank, FNB, and Standard Bank simultaneously via BetterBond (free service) or directly. Banks compete for your business. Multiple offers give you negotiating power to ask for a lower rate. This single step routinely saves buyers 0.25–0.5% — tens of thousands over the bond term.",
+          "Apply to ABSA, Nedbank, FNB, and Standard Bank simultaneously via BetterBond (free service) or directly. Banks compete for your business. Multiple offers give you negotiating power to ask for a lower rate. This single step routinely saves buyers 0.25-0.5% which is tens of thousands over the bond term.",
       },
       {
         id: "h4c",
-        label: "Commission an independent property inspection (R1,500–R3,000)",
+        label: "Commission an independent property inspection (R1,500-R3,000)",
         detail:
-          "A professional property inspector checks structural integrity, electrical compliance, plumbing, roof condition, and damp. Sellers are not always forthcoming about defects. A R2,500 inspection has saved buyers R50,000–R200,000 in hidden repair costs. It is non-negotiable on older properties.",
+          "A professional property inspector checks structural integrity, electrical compliance, plumbing, roof condition, and damp. Sellers are not always forthcoming about defects. A R2,500 inspection has saved buyers R50,000-R200,000 in hidden repair costs. It is non-negotiable on older properties.",
       },
       {
         id: "h4d",
         label:
-          "Negotiate the purchase price — most SA properties have 5–10% room",
+          "Negotiate the purchase price! Most SA properties have 5-10% room",
         detail:
-          "South African property listings typically have 5–10% negotiation room, especially in slower markets or when a property has been listed for 30+ days. Your deposit size, pre-qualification, and speed of closing are negotiating tools. Never accept the asking price without a counteroffer.",
+          "South African property listings typically have 5-10% negotiation room, especially in slower markets or when a property has been listed for 30+ days. Your deposit size, pre-qualification, and speed of closing are negotiating tools. Never accept the asking price without a counteroffer.",
       },
     ],
     color: "var(--absa-red)",
-    tip: "Applying to 3+ banks simultaneously typically gets you 0.25–0.5% better rate. On a R1.5M bond, that is R37,000–R75,000 saved.",
+    tip: "Applying to 3+ banks simultaneously typically gets you 0.25-0.5% better rate. On a R1.5M bond, that is R37,000-R75,000 saved.",
   },
   {
     year: 5,
@@ -158,7 +158,7 @@ const MILESTONES = [
       {
         id: "h5a",
         label:
-          "Pay extra into your bond every month — even R500–R1,000 makes a difference",
+          "Pay extra into your bond every month! Even R500-R1,000 makes a difference",
         detail:
           "Extra bond repayments reduce capital directly. On a R1.5M bond at 11.5% over 20 years: paying an extra R1,000/month saves R312,000 in total interest and cuts 4 years off your bond term. This is the highest guaranteed return available to a South African homeowner.",
       },
@@ -166,7 +166,7 @@ const MILESTONES = [
         id: "h5b",
         label: "Renegotiate your bond rate annually with your bank",
         detail:
-          "Your bond interest rate is not fixed permanently. Every 2–3 years, contact your bank and request a rate reduction based on your good payment history and improved credit score. Or refinance to a competitor offering a better rate. Banks will often match or beat a competitor quote rather than lose the client.",
+          "Your bond interest rate is not fixed permanently. Every 2-3 years, contact your bank and request a rate reduction based on your good payment history and improved credit score. Or refinance to a competitor offering a better rate. Banks will often match or beat a competitor quote rather than lose the client.",
       },
       {
         id: "h5c",
@@ -178,7 +178,7 @@ const MILESTONES = [
         id: "h5d",
         label: "Calculate your equity and plan your next financial move",
         detail:
-          "By year 5 with extra repayments on a R1.6M property you could have R200,000–R350,000 in equity (property value appreciation + capital paid off). This equity can be accessed via an access bond for investments, used as a deposit on a second property, or left to compound.",
+          "By year 5 with extra repayments on a R1.6M property you could have R200,000-R350,000 in equity (property value appreciation + capital paid off). This equity can be accessed via an access bond for investments, used as a deposit on a second property, or left to compound.",
       },
     ],
     color: "var(--sage)",
@@ -212,8 +212,8 @@ function buildNudges(profile, takeHome, disposable) {
     {
       icon: "🏠",
       text: monthsToDeposit
-        ? `Saving ${formatZAR(monthlySavingCapacity)}/month, you could reach a R300,000 deposit in approximately ${monthsToDeposit} months — that's your Year 2 target.`
-        : `Build up your savings capacity first — your current disposable income is tight. Review your fixed costs in the Snapshot.`,
+        ? `Saving ${formatZAR(monthlySavingCapacity)}/month, you could reach a R300,000 deposit in approximately ${monthsToDeposit} months . This is your Year 2 target.`
+        : `Build up your savings capacity first ... your current disposable income is tight. Review your fixed costs in the Snapshot.`,
     },
     {
       icon: "📊",
@@ -225,12 +225,12 @@ function buildNudges(profile, takeHome, disposable) {
     },
     {
       icon: "⭐",
-      text: `Transfer duty on a R1.8M property is R26,900. Add R35,000 in attorney fees and you need ${formatZAR(depositTarget + 61900)} total upfront — plan this into your savings target from Year 2.`,
+      text: `Transfer duty on a R1.8M property is R26,900. Add R35,000 in attorney fees and you need ${formatZAR(depositTarget + 61900)} total upfront , Try and plan this into your savings target from Year 2.`,
     },
   ];
 }
 
-// Transfer duty calculation — SARS 2024/25
+// Transfer duty calculation based on SARS Reports from 2024/25
 function calcTransferDuty(price) {
   if (price <= 1100000) return 0;
   if (price <= 1512500) return (price - 1100000) * 0.03;
@@ -357,7 +357,7 @@ export default function HomeownerTrack() {
   const { profile, takeHome, disposable } = useProfile();
   const NUDGES = buildNudges(profile, takeHome, disposable);
 
-  // Personalised recommendation amounts — all dynamic from profile
+  // Personalised recommendation amounts which is based on their Onboarding and personal finances!
   const depositMonthly = Math.round(Math.max(0, disposable) * 0.55);
   const emergencyTopUp = Math.round(Math.max(0, disposable) * 0.15);
   const raContrib = Math.round(Math.max(0, disposable) * 0.1);
@@ -392,15 +392,15 @@ export default function HomeownerTrack() {
             </div>
             <h1>The Homeowner's Vision</h1>
             <p className="track-hero-desc">
-              Stop renting. Build equity. Own your first home within 3–5 years.
+              Stop renting. Build equity. Own your first home within 3-5 years.
               This is your practical, step-by-step roadmap through the South
-              African property buying process — from credit score to transfer
+              African property buying process from credit score to transfer
               papers.
             </p>
             <div className="track-hero-stats">
               {[
-                { label: "Time Horizon", value: "3–5 Years" },
-                { label: "Deposit Target", value: "R200k–R400k" },
+                { label: "Time Horizon", value: "3-5 Years" },
+                { label: "Deposit Target", value: "R200k-R400k" },
                 { label: "Key Tools", value: "Bond · Transfer · Equity" },
                 { label: "Risk Profile", value: "Conservative" },
               ].map((s) => (
@@ -433,9 +433,9 @@ export default function HomeownerTrack() {
                 Property is the single largest financial decision most South
                 Africans will ever make. Done right, it builds equity, provides
                 stability, and creates a tangible asset that compounds over
-                decades. Done wrong — with too little deposit, the wrong credit
-                profile, or hidden purchase costs — it becomes a financial
-                burden that takes years to recover from.
+                decades. Done wrong specifically with too little deposit, the
+                wrong credit profile, or hidden purchase costs it becomes a
+                financial burden that takes years to recover from.
               </p>
               <p style={{ marginTop: "0.75rem" }}>
                 This track is about doing it <strong>right</strong>. That means
@@ -554,7 +554,7 @@ export default function HomeownerTrack() {
             <span className="eyebrow hand-note">Your 5-year roadmap</span>
             <h2>Milestones</h2>
             <p>
-              Click each year to expand. Tick off goals as you complete them —
+              Click each year to expand. Tick off goals as you complete them and
               your progress saves automatically.
             </p>
           </div>
@@ -591,7 +591,7 @@ export default function HomeownerTrack() {
             }}
           >
             Transfer duty is paid to SARS on property purchases above R1.1
-            million. It is not included in your bond — you pay it upfront from
+            million. It is not included in your bond and you pay it upfront from
             cash.
           </p>
           <div className="ho-duty-grid">
