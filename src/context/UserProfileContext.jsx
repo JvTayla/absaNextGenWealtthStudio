@@ -83,12 +83,22 @@ const UserProfileContext = createContext(null);
 
 //   Provider component (wraps the whole app)  
 export function UserProfileProvider({ children }) {
-  const [profile, setProfile] = useState(defaultProfile);
+  const [profile, setProfile] = useState(() => {
+  try {
+    const saved = localStorage.getItem('absa_user_profile');
+    if (saved) return { ...defaultProfile, ...JSON.parse(saved) };
+  } catch {}
+  return defaultProfile;
+});
 
-  // Update a top-level field (e.g. grossMonthly)
-  function updateProfile(updates) {
-    setProfile((prev) => ({ ...prev, ...updates }));
-  }
+  // Updates the profiles with information from the User Overview/ Onboarding
+function updateProfile(updates) {
+  setProfile((prev) => {
+    const next = { ...prev, ...updates };
+    try { localStorage.setItem('absa_user_profile', JSON.stringify(next)); } catch {}
+    return next;
+  });
+}
 
   // Update a nested field (e.g. fixedCosts.rent)
   function updateNested(section, key, value) {
@@ -97,6 +107,10 @@ export function UserProfileProvider({ children }) {
       [section]: { ...prev[section], [key]: value },
     }));
   }
+  function clearProfile() {
+  localStorage.removeItem('absa_user_profile');
+  setProfile(defaultProfile);
+}
 
   // Derived calculations (computed from profile data)
   const monthlyTax = calcTax(profile.grossMonthly);
