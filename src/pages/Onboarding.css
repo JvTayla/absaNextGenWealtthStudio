@@ -1,0 +1,480 @@
+/* ─────────────────────────────────────────────
+   Onboarding.css
+   Full-page wizard — matches the scrapbook design system
+───────────────────────────────────────────── */
+
+.onboarding-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decoration */
+.onboarding-bg-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.ob-decor-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.07;
+}
+.ob-decor-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--absa-red);
+  top: -200px;
+  right: -200px;
+}
+.ob-decor-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--gold);
+  bottom: -150px;
+  left: -100px;
+}
+.ob-decor-3 {
+  width: 300px;
+  height: 300px;
+  background: var(--dusty-blue);
+  top: 40%;
+  left: 10%;
+}
+
+/* Main card */
+.onboarding-card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px var(--shadow-deep);
+  padding: 2.5rem 2.75rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* Logo */
+.ob-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.ob-logo-img {
+  height: 28px;
+  object-fit: contain;
+}
+.ob-logo-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Progress */
+.ob-progress-wrap {
+  margin-bottom: 2.5rem;
+}
+.ob-progress-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.ob-progress-fill {
+  height: 100%;
+  background: var(--absa-red);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+.ob-step-dots {
+  display: flex;
+  gap: 0.75rem;
+}
+.ob-step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.ob-dot-active {
+  border-color: var(--absa-red);
+  background: var(--absa-red);
+  color: white;
+}
+.ob-dot-done {
+  border-color: var(--sage);
+  background: var(--sage);
+  color: white;
+}
+
+/* Step content */
+.ob-step {
+  animation: ob-fadein 0.3s ease;
+}
+@keyframes ob-fadein {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ob-step-eyebrow {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.ob-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+.ob-step-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+/* Fields */
+.ob-field {
+  margin-bottom: 1.25rem;
+}
+.ob-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.ob-label-hint {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+.ob-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  background: var(--warm-white);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+  outline: none;
+}
+.ob-input:focus {
+  border-color: var(--absa-red);
+}
+.ob-input-error {
+  border-color: var(--absa-red) !important;
+  background: #fff5f6;
+}
+.ob-error {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--absa-red);
+  margin-top: 0.35rem;
+}
+
+/* City pills */
+.ob-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.ob-pill {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--warm-white);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ob-pill:hover {
+  border-color: var(--absa-red);
+  color: var(--absa-red);
+}
+.ob-pill-active {
+  border-color: var(--absa-red);
+  background: var(--absa-red);
+  color: white;
+}
+
+/* Salary input */
+.ob-salary-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--warm-white);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.ob-salary-input-wrap:focus-within {
+  border-color: var(--absa-red);
+}
+.ob-currency-prefix {
+  padding: 0.75rem 0.85rem;
+  background: var(--cream-dark);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-right: 1.5px solid var(--border);
+}
+.ob-input-currency {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  flex: 1;
+}
+.ob-input-currency:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Slider */
+.ob-slider {
+  width: 100%;
+  margin: 0.75rem 0 0.25rem;
+  accent-color: var(--absa-red);
+  cursor: pointer;
+}
+.ob-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* PAYE preview */
+.ob-tax-preview {
+  background: var(--bg-card-alt);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-top: 0.5rem;
+}
+.ob-tax-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+}
+.ob-tax-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.ob-tax-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.ob-tax-deduction {
+  color: var(--absa-red);
+}
+.ob-tax-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.5rem 0;
+}
+.ob-tax-takehome .ob-tax-label,
+.ob-tax-takehome .ob-tax-value {
+  font-size: 1rem;
+}
+.ob-tax-green {
+  color: var(--sage);
+}
+.ob-tax-note {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Track cards */
+.ob-track-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+.ob-track-card {
+  width: 100%;
+  padding: 1.1rem 1.25rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-card);
+}
+.ob-track-card:hover {
+  border-color: var(--ob-track-border, var(--absa-red));
+}
+.ob-track-selected {
+  border-color: var(--ob-track-border, var(--absa-red)) !important;
+}
+.ob-track-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+}
+.ob-track-emoji {
+  font-size: 1.5rem;
+}
+.ob-track-check {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ob-track-color, var(--absa-red));
+  background: var(--warm-white);
+  border: 1.5px solid currentColor;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ob-track-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+.ob-track-tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Final step */
+.ob-step-final {
+  text-align: center;
+}
+.ob-confetti {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5rem;
+}
+.ob-title-large {
+  font-size: 1.9rem;
+}
+
+.ob-summary-card {
+  margin: 1.5rem 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+}
+.ob-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1.5px solid var(--border);
+}
+.ob-summary-emoji {
+  font-size: 1.75rem;
+}
+.ob-summary-track-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.ob-summary-track-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.ob-summary-rows {
+  padding: 0.5rem 0;
+}
+.ob-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.ob-summary-row:last-child {
+  border-bottom: none;
+}
+.ob-summary-key {
+  color: var(--text-muted);
+}
+.ob-summary-val {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.ob-summary-highlight {
+  background: var(--cream);
+}
+.ob-summary-green {
+  color: var(--sage);
+}
+.ob-summary-note {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--bg-card-alt);
+  border-top: 1.5px solid var(--border-light);
+  line-height: 1.5;
+}
+
+/* CTA */
+.ob-cta {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Navigation */
+.ob-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}
+.ob-step-final .ob-nav {
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .onboarding-card {
+    padding: 2rem 1.5rem;
+  }
+  .ob-step-title {
+    font-size: 1.45rem;
+  }
+}

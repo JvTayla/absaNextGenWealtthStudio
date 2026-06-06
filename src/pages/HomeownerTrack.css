@@ -1,0 +1,85 @@
+/* ─────────────────────────────────────────────
+   HomeownerTrack.css
+   Imports and extends GlobalCitizenTrack patterns
+   Red/warm theme overrides for the Homeowner Vision
+───────────────────────────────────────────── */
+
+/* Re-use all track-detail-page, milestone, goal, nudge, 
+   sa-context, track-cta styles from GlobalCitizenTrack.css
+   — those class names are shared via global.css and 
+   GlobalCitizenTrack.css which is already loaded.
+   This file adds Homeowner-specific overrides only. */
+
+/* Moodboard red tint */
+.ho-moodboard {
+  background: linear-gradient(
+    135deg,
+    var(--absa-red-light),
+    var(--cream-dark)
+  ) !important;
+}
+
+/* Rec card red accent override */
+.ho-rec {
+  border-left: 4px solid var(--absa-red);
+}
+
+/* Transfer duty table */
+.ho-duty-table {
+  padding: 1.5rem;
+}
+
+.ho-duty-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.ho-duty-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  padding: 0.6rem 1rem;
+  background: var(--cream-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.ho-duty-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  padding: 0.7rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.15s;
+}
+.ho-duty-row:last-child {
+  border-bottom: none;
+}
+.ho-duty-row:hover {
+  background: var(--cream);
+}
+
+/* Goal detail border — red for homeowner */
+.ho-moodboard ~ .milestone-body .goal-detail {
+  border-left-color: var(--absa-red);
+}
+
+@media (max-width: 600px) {
+  .ho-duty-header,
+  .ho-duty-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ho-duty-header span:last-child,
+  .ho-duty-row span:last-child {
+    display: none;
+  }
+}

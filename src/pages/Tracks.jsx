@@ -35,7 +35,7 @@ const TRACKS = [
     bg: 'linear-gradient(135deg, #FAE8EA 0%, #F2C4CC 100%)',
     border: 'var(--absa-red-muted)',
     path: '/tracks/homeowner',
-    available: false,
+    available: true,
   },
   {
     id: 'balanced',
