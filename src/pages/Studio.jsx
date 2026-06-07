@@ -51,7 +51,7 @@ const STUDIOS = [
     description: 'Simulate different local vs offshore portfolio splits and see how historical Rand depreciation affects real returns. Find your optimal allocation.',
     tags: ['Currency Risk', 'Portfolio Allocation', 'JSE vs Global'],
     time: '6 min',
-    available: false,
+    available: true,
     color: 'var(--dusty-blue)',
     bg: 'linear-gradient(135deg, #E8F2FA 0%, #C8DFF0 100%)',
   },

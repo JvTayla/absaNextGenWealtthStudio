@@ -1,0 +1,224 @@
+/* ─────────────────────────────────────────────
+   OffshoreStudio.css
+   Blue/gold theme for the Offshore Allocation Studio
+   Unique styles: hero allocation control, FX timeline, year table
+───────────────────────────────────────────── */
+
+.offshore-studio-page { padding: 2.5rem 0 4rem; }
+
+/* ── Hero allocation control ── */
+.offshore-hero-control {
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--dusty-blue);
+}
+
+.offshore-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.offshore-hero-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.offshore-split-display {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.offshore-divider {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.risk-badge-inline {
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Allocation slider with optimal zone */
+.offshore-alloc-slider-wrap { margin-bottom: 1.5rem; }
+
+.offshore-alloc-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.offshore-alloc-track-wrap {
+  position: relative;
+}
+
+.offshore-optimal-zone {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  background: rgba(139, 175, 136, 0.2);
+  border: 1.5px dashed var(--sage);
+  border-radius: 9px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.offshore-main-slider {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  accent-color: var(--dusty-blue);
+}
+
+/* Live result cards */
+.offshore-live-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.offshore-live-card {
+  background: var(--bg-card-alt);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 0.9rem;
+  text-align: center;
+}
+
+.offshore-live-total {
+  border-color: var(--gold);
+  background: rgba(212, 184, 84, 0.06);
+}
+
+.offshore-live-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.offshore-live-value {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.offshore-live-sub {
+  font-size: 0.69rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+/* Year-by-year table */
+.offshore-year-table {}
+
+.offshore-table-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr 1fr;
+  gap: 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--cream-dark);
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.offshore-table-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr 1fr;
+  gap: 0;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.15s;
+}
+
+.offshore-table-row:hover { background: var(--cream); }
+
+.offshore-table-final {
+  background: var(--cream);
+  font-weight: 700;
+  border-top: 2px solid var(--border);
+  border-bottom: none;
+}
+
+/* FX timeline */
+.offshore-fx-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.offshore-fx-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.offshore-fx-year {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  width: 45px;
+  flex-shrink: 0;
+}
+
+.offshore-fx-rate {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dusty-blue);
+  width: 50px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* SA note blue override */
+.offshore-sa-note {
+  border-left: 3px solid var(--dusty-blue) !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .offshore-live-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .offshore-split-display { font-size: 1.3rem; }
+
+  .offshore-live-results {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .offshore-table-header,
+  .offshore-table-row {
+    grid-template-columns: 50px 1fr 1fr;
+  }
+
+  .offshore-table-header span:nth-child(3),
+  .offshore-table-row span:nth-child(3) {
+    display: none;
+  }
+}

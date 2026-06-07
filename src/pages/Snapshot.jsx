@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { useProfile, SARS_BRACKETS } from "../context/UserProfileContext";
 import { formatZAR, formatZARShort } from "../utils/finance";
 import "./Snapshot.css";
+import NudgeSystem from "../components/NudgeSystem";
 
 // effective tax rate is just tax/gross * 100, took me a bit to figure out the right way to display this
 // TODO: maybe add a graph here later if i have time
 
-// The use of this page is to give the user a clear picture of their current financial situation, 
-// with a focus on their income, tax, and spending patterns. 
-// I  Tried to make it as readable as possible, but im considering adding extra Graphs and information , 
+// The use of this page is to give the user a clear picture of their current financial situation,
+// with a focus on their income, tax, and spending patterns.
+// I  Tried to make it as readable as possible, but im considering adding extra Graphs and information ,
 // Im just a bit biased becasue its hard to find a reliable credit checker that isnt scammy
 
-// anyway im really happy with how this page turned out, it was a bit of a struggle to figure out how to present the information in a way that is engaging and not overwhelming, 
+// anyway im really happy with how this page turned out, it was a bit of a struggle to figure out how to present the information in a way that is engaging and not overwhelming,
 // but i think the use of cards, colors, and tooltips helps make it more digestible.
 
 // Tooltip helper
@@ -236,6 +237,7 @@ export default function Snapshot() {
             </div>
           </div>
         </div>
+        <NudgeSystem />
 
         {/*    TABS    */}
         <div className="snapshot-tabs">

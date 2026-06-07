@@ -17,6 +17,7 @@ import BalancedTrack from "./pages/BalancedTrack";
 import Studio from "./pages/Studio";
 import CarStudio from "./pages/CarStudio";
 import RentVsBuyStudio from "./pages/RentVsBuyStudio";
+import OffshoreStudio from "./pages/OffshoreStudio";
 import Learn from "./pages/Learn";
 import Onboarding from "./pages/Onboarding";
 import Footer from "./components/Footer";
@@ -64,6 +65,10 @@ export default function App() {
               <Route path="/studio" element={<Studio />} />
               <Route path="/studio/car-comparison" element={<CarStudio />} />
               <Route path="/studio/rent-vs-buy" element={<RentVsBuyStudio />} />
+              <Route
+                path="/studio/offshore-allocation"
+                element={<OffshoreStudio />}
+              />
               <Route path="/learn" element={<Learn />} />
             </Routes>
           </div>
