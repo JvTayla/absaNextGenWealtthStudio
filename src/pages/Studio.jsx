@@ -38,7 +38,7 @@ const STUDIOS = [
     description: 'Running the real numbers: bond repayments, transfer duty, rates & levies, versus rental costs and investing the deposit. The answer might surprise you.',
     tags: ['Bond Repayments', 'Transfer Duty', 'Property Growth'],
     time: '8 min',
-    available: false,
+    available: true,
     color: 'var(--gold)',
     bg: 'linear-gradient(135deg, #FDF5E0 0%, #FAE8B0 100%)',
   },

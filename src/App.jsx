@@ -16,6 +16,7 @@ import HomeownerTrack from "./pages/HomeownerTrack";
 import BalancedTrack from "./pages/BalancedTrack";
 import Studio from "./pages/Studio";
 import CarStudio from "./pages/CarStudio";
+import RentVsBuyStudio from "./pages/RentVsBuyStudio";
 import Learn from "./pages/Learn";
 import Onboarding from "./pages/Onboarding";
 import Footer from "./components/Footer";
@@ -62,6 +63,7 @@ export default function App() {
               <Route path="/tracks/balanced" element={<BalancedTrack />} />
               <Route path="/studio" element={<Studio />} />
               <Route path="/studio/car-comparison" element={<CarStudio />} />
+              <Route path="/studio/rent-vs-buy" element={<RentVsBuyStudio />} />
               <Route path="/learn" element={<Learn />} />
             </Routes>
           </div>
