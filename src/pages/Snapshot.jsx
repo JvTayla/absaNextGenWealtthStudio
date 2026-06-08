@@ -139,12 +139,6 @@ export default function Snapshot() {
               want to be.
             </p>
           </div>
-          <button
-            className={`btn ${editMode ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => setEditMode((e) => !e)}
-          >
-            {editMode ? "✓ Save Changes" : "✎ Edit My Numbers"}
-          </button>
         </div>
 
         {/*    VISION BANNER    */}
@@ -250,6 +244,12 @@ export default function Snapshot() {
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
+          <button
+            className={`btn btn-sm ${editMode ? "btn-primary" : "btn-secondary"} snapshot-edit-btn`}
+            onClick={() => setEditMode((e) => !e)}
+          >
+            {editMode ? "✓ Done" : "✎ Edit"}
+          </button>
         </div>
 
         {/*    OVERVIEW TAB    */}

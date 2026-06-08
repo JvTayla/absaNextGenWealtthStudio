@@ -8,7 +8,7 @@
 
 import { createContext, useContext, useState } from "react";
 
-//   South African SARS Tax Brackets (2024/25 tax year)  
+//   South African SARS Tax Brackets (2024/25 tax year)
 // These are the real SARS brackets — we use these to estimate PAYE
 export const SARS_BRACKETS = [
   { min: 0, max: 237100, base: 0, rate: 0.18 },
@@ -78,27 +78,29 @@ const defaultProfile = {
   riskTolerance: "moderate", // conservative | moderate | aggressive
 };
 
-//   Create the Context  
+//   Create the Context
 const UserProfileContext = createContext(null);
 
-//   Provider component (wraps the whole app)  
+//   Provider component (wraps the whole app)
 export function UserProfileProvider({ children }) {
   const [profile, setProfile] = useState(() => {
-  try {
-    const saved = localStorage.getItem('absa_user_profile');
-    if (saved) return { ...defaultProfile, ...JSON.parse(saved) };
-  } catch {}
-  return defaultProfile;
-});
+    try {
+      const saved = localStorage.getItem("absa_user_profile");
+      if (saved) return { ...defaultProfile, ...JSON.parse(saved) };
+    } catch {}
+    return defaultProfile;
+  });
 
   // Updates the profiles with information from the User Overview/ Onboarding
-function updateProfile(updates) {
-  setProfile((prev) => {
-    const next = { ...prev, ...updates };
-    try { localStorage.setItem('absa_user_profile', JSON.stringify(next)); } catch {}
-    return next;
-  });
-}
+  function updateProfile(updates) {
+    setProfile((prev) => {
+      const next = { ...prev, ...updates };
+      try {
+        localStorage.setItem("absa_user_profile", JSON.stringify(next));
+      } catch {}
+      return next;
+    });
+  }
 
   // Update a nested field (e.g. fixedCosts.rent)
   function updateNested(section, key, value) {
@@ -108,9 +110,9 @@ function updateProfile(updates) {
     }));
   }
   function clearProfile() {
-  localStorage.removeItem('absa_user_profile');
-  setProfile(defaultProfile);
-}
+    localStorage.removeItem("absa_user_profile");
+    setProfile(defaultProfile);
+  }
 
   // Derived calculations (computed from profile data)
   const monthlyTax = calcTax(profile.grossMonthly);
@@ -145,15 +147,11 @@ function updateProfile(updates) {
         profile,
         updateProfile,
         updateNested,
-        // Derived
-        monthlyTax,
+        clearProfile,
         takeHome,
-        totalFixed,
-        totalVariable,
-        totalSpending,
         disposable,
-        goalProgress,
         totalSavings,
+        monthlyTax,
       }}
     >
       {children}
@@ -161,7 +159,7 @@ function updateProfile(updates) {
   );
 }
 
-//   Custom hook for easy access  
+//   Custom hook for easy access
 export function useProfile() {
   const ctx = useContext(UserProfileContext);
   if (!ctx)
