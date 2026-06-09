@@ -344,7 +344,7 @@ export default function Onboarding() {
 
   return (
     <div className="ob-page">
-      {/* ── Card ── */}
+      {/*      Card      */}
       <div className="ob-card">
         {/* Logo */}
         <div className="ob-logo-row">
@@ -749,7 +749,7 @@ export default function Onboarding() {
               </div>
             </div>
 
-            {/* ── Mini Money Snapshot ── */}
+            {/*      Mini Money Snapshot      */}
             <div className="ob-mini-snapshot">
               <div className="ob-mini-snap-head hand-note">
                 Money Snapshot preview
@@ -872,7 +872,7 @@ export default function Onboarding() {
           </div>
         )}
 
-        {/* ── Nav ── */}
+        {/*      Nav      */}
         <div className={`ob-nav ${step === 5 ? "ob-nav-end" : ""}`}>
           {step > 1 && step < 5 && (
             <button type="button" className="btn btn-ghost" onClick={back}>

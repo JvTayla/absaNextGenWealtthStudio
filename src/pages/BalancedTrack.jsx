@@ -68,7 +68,7 @@ const MILESTONES = [
         label:
           "Open a TFSA and make first contribution! Even R500/month counts",
         detail:
-          "Even while building your emergency fund, open a TFSA and put something in. The R36,000 annual contribution limit is use-it-or-lose-it AKA you cannot backdate missed years. Starting with R500/month builds the habit and bank account, and you can scale up once the emergency fund is complete.",
+          "Even while building your emergency fund, open a TFSA and put something in. The R46,000 annual contribution limit is use-it-or-lose-it AKA you cannot backdate missed years. Starting with R500/month builds the habit and bank account, and you can scale up once the emergency fund is complete.",
       },
       {
         id: "b2d",
@@ -87,7 +87,7 @@ const MILESTONES = [
     goals: [
       {
         id: "b3a",
-        label: "Maximise TFSA contributions (R36,000/year = R3,000/month)",
+        label: "Maximise TFSA contributions (R46,000/year = R3,833.33/month)",
         detail:
           "With debt gone and your emergency fund built, redirect all that freed-up cash into your TFSA first. R3,000/month maxes your annual limit. Invested at 10% p.a. in a broad ETF, after 5 years you have approximately R233,000 which is all completely tax-free, forever.",
       },
@@ -164,7 +164,7 @@ const MILESTONES = [
         id: "b5b",
         label: "Model your FIRE number (Financial Independence, Retire Early)",
         detail:
-          "Financial independence = 25 times your annual expenses (the 4% rule). At R25,000/month in costs, your FIRE number is R7.5 million. With R450,000 already invested and R6,000/month continuing at 10% returns, you reach it in approximately 22 years. That is entirely achievable from where you are now.",
+          "Financial independence = 25 times your annual expenses (the 4% rule). At R25,000/month in costs, your FIRE number is R7.5 million. With R460,000 already invested and R6,000/month continuing at 10% returns, you reach it in approximately 22 years. That is entirely achievable from where you are now.",
       },
       {
         id: "b5c",
@@ -192,7 +192,7 @@ function buildNudges(profile, takeHome, disposable, totalSavings) {
   );
   const savingsRate = Math.round((totalSavings / (takeHome * 12)) * 100);
   const tfsaContrib = profile.savings.tfsa || 0;
-  const tfsaRemaining = Math.max(0, 36000 - tfsaContrib);
+  const tfsaRemaining = Math.max(0, 46000 - tfsaContrib);
 
   // Projected TFSA after 5 years if they contribute R3k/month
   const tfsaFV = Math.round(futureValue(tfsaContrib, 3000, 0.1, 5));
@@ -339,7 +339,7 @@ export default function BalancedTrack() {
   const { profile, takeHome, disposable, totalSavings } = useProfile();
   const NUDGES = buildNudges(profile, takeHome, disposable, totalSavings);
 
-  // Dynamic allocation these are from the onboarding 
+  // Dynamic allocation these are from the onboarding
   const debtExtra = Math.round(Math.max(0, disposable) * 0.5);
   const emergencyAlloc = Math.round(Math.max(0, disposable) * 0.25);
   const tfsaAlloc = Math.min(3000, Math.round(Math.max(0, disposable) * 0.15));
@@ -424,8 +424,9 @@ export default function BalancedTrack() {
                   clear debt first, build a safety net second, then invest
                 </strong>
                 . Each phase funds the next. By year 3 you are investing from a
-                position of genuine financial strength This means no debt undermining
-                your returns, no fragility waiting to reset your progress.
+                position of genuine financial strength This means no debt
+                undermining your returns, no fragility waiting to reset your
+                progress.
               </p>
             </div>
             <div className="philosophy-pillars">
@@ -603,7 +604,8 @@ export default function BalancedTrack() {
             <span className="eyebrow hand-note">Your 5-year roadmap</span>
             <h2>Milestones</h2>
             <p>
-              Click each year to expand. Tick off goals as you complete them (your progress saves automatically)
+              Click each year to expand. Tick off goals as you complete them
+              (your progress saves automatically)
             </p>
           </div>
           <div className="milestones-list">
@@ -646,7 +648,7 @@ export default function BalancedTrack() {
               {
                 title: "TFSA Annual Limit",
                 detail:
-                  "R36,000 per tax year (from 1 March 2024). Lifetime limit R500,000. Over-contributing results in a 40% penalty tax on the excess. The limit cannot be backdated AKA each year you miss is gone permanently. Even R500/month is better than R0.",
+                  "R46,000 per tax year (from 1 March 2024). Lifetime limit R500,000. Over-contributing results in a 40% penalty tax on the excess. The limit cannot be backdated AKA each year you miss is gone permanently. Even R500/month is better than R0.",
               },
               {
                 title: "RA Tax Deductibility",

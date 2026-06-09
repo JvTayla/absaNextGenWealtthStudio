@@ -42,7 +42,7 @@ function generateNudges(
   const raTaxSaving = Math.round(raMonthly * 0.31 * 12);
   const dtiRatio = takeHome > 0 ? Math.round((totalFixed / takeHome) * 100) : 0;
 
-  // ── WARNING: Overspending ──
+  //    WARNING: Overspending   
   if (disposable < 0) {
     nudges.push({
       id: "overspend",
@@ -54,7 +54,7 @@ function generateNudges(
     });
   }
 
-  // ── WARNING: Spending over 90% of take-home ──
+  //    WARNING: Spending over 90% of take-home   
   if (disposable >= 0 && spendingPct > 90) {
     nudges.push({
       id: "high_spend",
@@ -66,7 +66,7 @@ function generateNudges(
     });
   }
 
-  // ── WARNING: High lifestyle spending ──
+  //    WARNING: High lifestyle spending   
   if (lifestylePct > 25) {
     nudges.push({
       id: "lifestyle_high",
@@ -78,7 +78,7 @@ function generateNudges(
     });
   }
 
-  // ── WARNING: No emergency fund ──
+  //    WARNING: No emergency fund   
   if (emergencyFund < 10000) {
     nudges.push({
       id: "no_emergency",
@@ -90,7 +90,7 @@ function generateNudges(
     });
   }
 
-  // ── TIP: Emergency fund partially built ──
+  //    TIP: Emergency fund partially built   
   if (emergencyFund >= 10000 && emergencyFund < emergencyTarget) {
     const remaining = emergencyTarget - emergencyFund;
     const monthsToTarget =
@@ -105,7 +105,7 @@ function generateNudges(
     });
   }
 
-  // ── CELEBRATE: Emergency fund complete ──
+  //    CELEBRATE: Emergency fund complete   
   if (emergencyFund >= emergencyTarget && emergencyFund < emergencyTargetFull) {
     nudges.push({
       id: "emergency_done",
@@ -117,7 +117,7 @@ function generateNudges(
     });
   }
 
-  // ── TIP: TFSA limit not maxed ──
+  //    TIP: TFSA limit not maxed   
   if (tfsaRemaining > 0) {
     nudges.push({
       id: "tfsa_room",
@@ -129,7 +129,7 @@ function generateNudges(
     });
   }
 
-  // ── CELEBRATE: TFSA maxed ──
+  //    CELEBRATE: TFSA maxed   
   if (tfsaContrib >= 36000) {
     nudges.push({
       id: "tfsa_maxed",
@@ -141,7 +141,7 @@ function generateNudges(
     });
   }
 
-  // ── INFO: RA tax saving opportunity ──
+  //    INFO: RA tax saving opportunity   
   if ((profile.savings.ra || 0) < takeHome * 0.05 * 12) {
     nudges.push({
       id: "ra_opportunity",
@@ -153,7 +153,7 @@ function generateNudges(
     });
   }
 
-  // ── INFO: High DTI ratio ──
+  //    INFO: High DTI ratio   
   if (dtiRatio > 40) {
     nudges.push({
       id: "dti_high",
@@ -165,7 +165,7 @@ function generateNudges(
     });
   }
 
-  // ── INFO: No offshore exposure ──
+  //    INFO: No offshore exposure   
   if ((profile.savings.offshore || 0) === 0 && totalSavings > 50000) {
     nudges.push({
       id: "no_offshore",
@@ -177,7 +177,7 @@ function generateNudges(
     });
   }
 
-  // ── CELEBRATE: Strong savings rate ──
+  //    CELEBRATE: Strong savings rate   
   if (savingsRate > 0.3 && totalSavings > 100000) {
     nudges.push({
       id: "great_savings",

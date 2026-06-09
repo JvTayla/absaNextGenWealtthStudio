@@ -9,7 +9,7 @@
 import { createContext, useContext, useState } from "react";
 
 //   South African SARS Tax Brackets (2024/25 tax year)
-// These are the real SARS brackets and we use these to estimate PAYE
+// These are the real SARS brackets we use these to estimate PAYE
 export const SARS_BRACKETS = [
   { min: 0, max: 237100, base: 0, rate: 0.18 },
   { min: 237101, max: 370500, base: 42678, rate: 0.26 },
@@ -20,7 +20,7 @@ export const SARS_BRACKETS = [
   { min: 1817001, max: Infinity, base: 644489, rate: 0.45 },
 ];
 
-const PRIMARY_REBATE = 17235; // 2024/25
+const PRIMARY_REBATE = 17235; // 2024/25 update when 2025/26 confirmed by SARS
 const UIF_RATE = 0.01; // 1% up to ceiling
 const UIF_CEILING = 17712; // monthly ceiling
 
@@ -135,11 +135,39 @@ export function UserProfileProvider({ children }) {
   const totalSpending = totalFixed + totalVariable;
   const disposable = takeHome - totalSpending;
 
+  // Derive the goal's current value and target dynamically from real savings data
+  // so the ring always reflects what the user has actually entered.
+  const TRACK_GOAL_MAP = {
+    "global-citizen": {
+      name: "Offshore Portfolio Target",
+      current: (profile.savings.offshore || 0) + (profile.savings.localInvestments || 0),
+      target: 500000,
+    },
+    homeowner: {
+      name: "Home Deposit Target",
+      current: (profile.savings.emergencyFund || 0) + (profile.savings.localInvestments || 0),
+      target: 350000,
+    },
+    balanced: {
+      name: "Balanced Wealth Target",
+      current: Object.values(profile.savings).reduce((s, v) => s + v, 0),
+      target: 300000,
+    },
+  };
+
+  const derivedGoal =
+    TRACK_GOAL_MAP[profile.selectedTrack] || TRACK_GOAL_MAP["global-citizen"];
+
+  const primaryGoalDerived = {
+    name: derivedGoal.name,
+    current: derivedGoal.current,
+    target: derivedGoal.target,
+    timelineYears: profile.primaryGoal?.timelineYears || 5,
+  };
+
   const goalProgress = Math.min(
     100,
-    Math.round(
-      (profile.primaryGoal.current / profile.primaryGoal.target) * 100,
-    ),
+    Math.round((derivedGoal.current / derivedGoal.target) * 100),
   );
 
   const totalSavings = Object.values(profile.savings).reduce(
@@ -156,8 +184,13 @@ export function UserProfileProvider({ children }) {
         clearProfile,
         takeHome,
         disposable,
+        totalFixed,
+        totalVariable,
+        totalSpending,
         totalSavings,
         monthlyTax,
+        goalProgress,
+        primaryGoalDerived,
       }}
     >
       {children}

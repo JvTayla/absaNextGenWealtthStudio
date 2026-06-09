@@ -378,7 +378,7 @@ export default function HomeownerTrack() {
   return (
     <div className="track-detail-page">
       <div className="container">
-        {/* ── HERO ── */}
+        {/*      HERO      */}
         <div className="track-hero">
           <div className="track-hero-content">
             <Link to="/tracks" className="back-link">
@@ -424,7 +424,7 @@ export default function HomeownerTrack() {
           </div>
         </div>
 
-        {/* ── PHILOSOPHY ── */}
+        {/*      PHILOSOPHY      */}
         <div className="philosophy-section card">
           <div className="philosophy-inner">
             <div>
@@ -473,7 +473,7 @@ export default function HomeownerTrack() {
           </div>
         </div>
 
-        {/* ── PERSONAL RECOMMENDATION ── */}
+        {/*      PERSONAL RECOMMENDATION      */}
         <div
           className="card-gold personal-rec ho-rec"
           style={{
@@ -548,7 +548,7 @@ export default function HomeownerTrack() {
           </p>
         </div>
 
-        {/* ── MILESTONES ── */}
+        {/*      MILESTONES      */}
         <div className="milestones-section">
           <div className="section-header">
             <span className="eyebrow hand-note">Your 5-year roadmap</span>
@@ -565,7 +565,7 @@ export default function HomeownerTrack() {
           </div>
         </div>
 
-        {/* ── NUDGES ── */}
+        {/*      NUDGES      */}
         <div className="nudges-section">
           <h3 style={{ marginBottom: "1rem" }}>Your Homeowner Nudges</h3>
           <div className="nudges-grid">
@@ -578,7 +578,7 @@ export default function HomeownerTrack() {
           </div>
         </div>
 
-        {/* ── TRANSFER DUTY TABLE ── */}
+        {/*      TRANSFER DUTY TABLE      */}
         <div className="card ho-duty-table" style={{ marginBottom: "2rem" }}>
           <h4 style={{ marginBottom: "1rem" }}>
             🇿🇦 Transfer Duty Reference Table (SARS 2024/25)
@@ -625,7 +625,7 @@ export default function HomeownerTrack() {
           </p>
         </div>
 
-        {/* ── SA CONTEXT ── */}
+        {/*      SA CONTEXT      */}
         <div className="sa-context-box card" style={{ marginBottom: "2rem" }}>
           <h4 style={{ marginBottom: "1rem" }}>
             🇿🇦 Key South African Context for This Track
@@ -663,7 +663,7 @@ export default function HomeownerTrack() {
           </div>
         </div>
 
-        {/* ── CTA ── */}
+        {/*      CTA      */}
         <div className="track-cta">
           <div>
             <h3>Should you buy or keep renting?</h3>

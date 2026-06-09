@@ -80,7 +80,7 @@ export default function RentVsBuyStudio() {
     return v => setInputs(prev => ({ ...prev, [key]: v }));
   }
 
-  // ── ALL CALCULATIONS ──
+  //      ALL CALCULATIONS     
   const results = useMemo(() => {
     const { propertyPrice, deposit, bondRate, bondTermYears, propertyGrowthRate,
       leviesMonthly, ratesMonthly, maintenancePct, attorneyFees,
@@ -90,7 +90,7 @@ export default function RentVsBuyStudio() {
     const years = timeHorizon;
     const months = years * 12;
 
-    // ── BUYING SCENARIO ──
+    //      BUYING SCENARIO     
     const transferDuty = calcTransferDuty(propertyPrice);
     const totalUpfront = deposit + transferDuty + attorneyFees;
     const bondAmount = propertyPrice - deposit;
@@ -119,7 +119,7 @@ export default function RentVsBuyStudio() {
     // Net wealth buying = equity - total cash out (excluding deposit which is in equity)
     const netWealthBuying = equity - (totalBondPaid + totalRunningCosts + transferDuty + attorneyFees);
 
-    // ── RENTING SCENARIO ──
+    //      RENTING SCENARIO     
     // Total rent paid (increasing annually)
     let totalRentPaid = 0;
     let currentRent = monthlyRent;
@@ -142,7 +142,7 @@ export default function RentVsBuyStudio() {
     const totalInvestedWealth = depositGrowth + savedUpfrontGrowth + monthlyDiffInvested;
     const netWealthRenting = totalInvestedWealth - totalRentPaid;
 
-    // ── BREAK-EVEN ──
+    //      BREAK-EVEN     
     // Approximate year when buying starts to outperform renting
     let breakEvenYear = null;
     for (let y = 1; y <= 30; y++) {
@@ -198,7 +198,7 @@ export default function RentVsBuyStudio() {
     <div className="rvb-studio-page">
       <div className="container">
 
-        {/* ── HEADER ── */}
+        {/*      HEADER      */}
         <div className="studio-header">
           <Link to="/studio" className="back-link">← All Studios</Link>
           <div className="studio-title-row">
@@ -217,7 +217,7 @@ export default function RentVsBuyStudio() {
           </div>
         </div>
 
-        {/* ── KEY METRICS BAR ── */}
+        {/*      KEY METRICS BAR      */}
         <div className="rvb-metrics-bar">
           {[
             { label: 'Bond repayment', value: formatZAR(results.monthlyBond), sub: '/month', color: 'var(--absa-red)' },
@@ -236,7 +236,7 @@ export default function RentVsBuyStudio() {
 
         <div className="studio-layout">
 
-          {/* ── LEFT: INPUTS ── */}
+          {/*      LEFT: INPUTS      */}
           <div className="studio-inputs">
             <div className="input-tabs">
               {['buying', 'renting', 'market'].map(tab => (
@@ -331,7 +331,7 @@ export default function RentVsBuyStudio() {
             )}
           </div>
 
-          {/* ── RIGHT: OUTPUTS ── */}
+          {/*      RIGHT: OUTPUTS      */}
           <div className="studio-outputs">
 
             {/* Head-to-head comparison */}
@@ -479,7 +479,7 @@ export default function RentVsBuyStudio() {
           </div>
         </div>
 
-        {/* ── KEY CONCEPTS ── */}
+        {/*      KEY CONCEPTS      */}
         <div className="studio-concepts">
           <h3 style={{ marginBottom: '1.25rem' }}>Key Concepts Explained</h3>
           <div className="concepts-grid">

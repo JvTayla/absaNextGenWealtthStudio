@@ -251,7 +251,7 @@ function ProfileModal({ onClose }) {
   );
 }
 
-// ── Main Navbar ──
+//      Main Navbar     
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);

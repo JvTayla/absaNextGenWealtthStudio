@@ -99,7 +99,7 @@ export default function OffshoreStudio() {
     return (v) => setInputs((prev) => ({ ...prev, [key]: v }));
   }
 
-  // ── ALL CALCULATIONS ──
+  //      ALL CALCULATIONS     
   const results = useMemo(() => {
     const {
       monthlyInvestment,
@@ -122,7 +122,7 @@ export default function OffshoreStudio() {
     const localMonthly = monthlyInvestment * (localPct / 100);
     const offshoreMonthly = monthlyInvestment * (offshorePct / 100);
 
-    // ── LOCAL PORTFOLIO ──
+    //      LOCAL PORTFOLIO     
     // Grows at localReturn in ZAR
     const localFV = futureValue(
       localPrincipal,
@@ -131,7 +131,7 @@ export default function OffshoreStudio() {
       years,
     );
 
-    // ── OFFSHORE PORTFOLIO ──
+    //      OFFSHORE PORTFOLIO     
     // Grows at offshoreReturnUSD in USD
     // Convert contributions to USD at current rate
     const offshorePrincipalUSD = offshorePrincipal / zarPerUSD;
@@ -150,7 +150,7 @@ export default function OffshoreStudio() {
     // Total portfolio value in ZAR
     const totalFV = localFV + offshoreFV_ZAR;
 
-    // ── COMPARISONS: 100% local vs 100% offshore ──
+    //      COMPARISONS: 100% local vs 100% offshore     
     const fullyLocalFV = futureValue(
       currentPortfolio,
       monthlyInvestment,
@@ -294,7 +294,7 @@ export default function OffshoreStudio() {
   return (
     <div className="offshore-studio-page">
       <div className="container">
-        {/* ── HEADER ── */}
+        {/*      HEADER      */}
         <div className="studio-header">
           <Link to="/studio" className="back-link">
             ← All Studios
@@ -436,7 +436,7 @@ export default function OffshoreStudio() {
         </div>
 
         <div className="studio-layout">
-          {/* ── LEFT: INPUTS ── */}
+          {/*      LEFT: INPUTS      */}
           <div className="studio-inputs">
             <div className="input-tabs">
               {["allocation", "returns", "currency"].map((tab) => (
@@ -656,7 +656,7 @@ export default function OffshoreStudio() {
             )}
           </div>
 
-          {/* ── RIGHT: OUTPUTS ── */}
+          {/*      RIGHT: OUTPUTS      */}
           <div className="studio-outputs">
             {/* Comparison bars: this split vs 100% local vs 100% offshore */}
             <div className="card" style={{ padding: "1.25rem" }}>
@@ -927,7 +927,7 @@ export default function OffshoreStudio() {
           </div>
         </div>
 
-        {/* ── KEY CONCEPTS ── */}
+        {/*      KEY CONCEPTS      */}
         <div className="studio-concepts">
           <h3 style={{ marginBottom: "1.25rem" }}>Key Concepts Explained</h3>
           <div className="concepts-grid">

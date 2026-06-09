@@ -5,7 +5,6 @@ import "./Home.css";
 
 // Track metadata which mirrors the Onboarding TRACKS array so the home card
 // always reflects whatever track the user actually selected.
-
 const TRACK_META = {
   "global-citizen": {
     label: "Global Citizen Vision",
@@ -37,7 +36,7 @@ const TRACK_META = {
 // and letting people add images ? Perchance so they can create a mock vision board.
 
 export default function Home() {
-  const { profile, disposable, takeHome, goalProgress } = useProfile();
+  const { profile, disposable, takeHome, goalProgress, primaryGoalDerived } = useProfile();
 
   // Resolve the active track meta which falls back to global-citizen if somehow undefined
   const trackMeta =
@@ -124,11 +123,10 @@ export default function Home() {
                   <span className="zar-amount">{formatZAR(disposable)}</span>
                 </div>
                 <div className="fc-stat">
-                  <span className="fc-stat-label">Total savings</span>
+                  <span className="fc-stat-label">{primaryGoalDerived.name}</span>
                   <span className="zar-amount">
-                    {formatZARShort(
-                      Object.values(profile.savings).reduce((a, b) => a + b, 0),
-                    )}
+                    {formatZARShort(primaryGoalDerived.current)}
+                    <span style={{fontSize:"0.7rem", opacity:0.6}}> / {formatZARShort(primaryGoalDerived.target)}</span>
                   </span>
                 </div>
               </div>

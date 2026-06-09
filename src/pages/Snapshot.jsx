@@ -108,6 +108,7 @@ export default function Snapshot() {
     disposable,
     goalProgress,
     totalSavings,
+    primaryGoalDerived,
   } = useProfile();
 
   const [editMode, setEditMode] = useState(false);
@@ -121,8 +122,7 @@ export default function Snapshot() {
   const monthsToGoal =
     disposable > 0
       ? Math.ceil(
-          (profile.primaryGoal.target - profile.primaryGoal.current) /
-            disposable,
+          (primaryGoalDerived.target - primaryGoalDerived.current) / disposable,
         )
       : null;
 
@@ -142,95 +142,122 @@ export default function Snapshot() {
         </div>
 
         {/*    VISION BANNER    */}
-        <div className="vision-banner card-feature">
-          <div className="vision-banner-inner">
-            <div>
-              <span
-                style={{
-                  opacity: 0.8,
-                  fontSize: "0.8rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                Your Active Vision
-              </span>
-              <div className="vision-title">✈ Global Citizen Vision</div>
-              <p
-                style={{
-                  color: "rgba(255,255,255,0.85)",
-                  fontSize: "0.9rem",
-                  marginTop: "0.25rem",
-                }}
-              >
-                Building offshore wealth, maximising TFSA & RA, creating
-                location-independent income.
-              </p>
-            </div>
-            <div className="vision-goal-progress">
-              <div className="goal-ring-wrapper">
-                <svg viewBox="0 0 100 100" className="goal-ring-svg">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="42"
-                    stroke="rgba(255,255,255,0.2)"
-                    strokeWidth="10"
-                    fill="none"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="42"
-                    stroke="rgba(255,255,255,0.9)"
-                    strokeWidth="10"
-                    fill="none"
-                    strokeDasharray={`${goalProgress * 2.639} 263.9`}
-                    strokeLinecap="round"
-                    transform="rotate(-90 50 50)"
-                  />
-                </svg>
-                <div className="goal-ring-label">
-                  <div
+        {(() => {
+          const TRACK_META = {
+            "global-citizen": {
+              label: "Global Citizen Vision",
+              icon: "✈",
+              desc: "Building offshore wealth, maximising TFSA & RA, creating location-independent income.",
+              path: "/tracks/global-citizen",
+            },
+            homeowner: {
+              label: "Homeowner's Vision",
+              icon: "🏠",
+              desc: "Saving your deposit, improving your credit score, and preparing for your first bond application.",
+              path: "/tracks/homeowner",
+            },
+            balanced: {
+              label: "Balanced Wealth Vision",
+              icon: "⚖",
+              desc: "Clearing debt, building an emergency fund, and starting to invest , That is the right order.",
+              path: "/tracks/balanced",
+            },
+          };
+          const tm =
+            TRACK_META[profile.selectedTrack] || TRACK_META["global-citizen"];
+          return (
+            <div className="vision-banner card-feature">
+              <div className="vision-banner-inner">
+                <div>
+                  <span
                     style={{
-                      fontSize: "1.5rem",
-                      fontWeight: "700",
-                      fontFamily: "var(--font-serif)",
-                    }}
-                  >
-                    {goalProgress}%
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.65rem",
                       opacity: 0.8,
+                      fontSize: "0.8rem",
                       textTransform: "uppercase",
+                      letterSpacing: "0.06em",
                     }}
                   >
-                    of goal
+                    Your Active Vision
+                  </span>
+                  <div className="vision-title">
+                    {tm.icon} {tm.label}
+                  </div>
+                  <p
+                    style={{
+                      color: "rgba(255,255,255,0.85)",
+                      fontSize: "0.9rem",
+                      marginTop: "0.25rem",
+                    }}
+                  >
+                    {tm.desc}
+                  </p>
+                </div>
+                <div className="vision-goal-progress">
+                  <div className="goal-ring-wrapper">
+                    <svg viewBox="0 0 100 100" className="goal-ring-svg">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="42"
+                        stroke="rgba(255,255,255,0.2)"
+                        strokeWidth="10"
+                        fill="none"
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="42"
+                        stroke="rgba(255,255,255,0.9)"
+                        strokeWidth="10"
+                        fill="none"
+                        strokeDasharray={`${goalProgress * 2.639} 263.9`}
+                        strokeLinecap="round"
+                        transform="rotate(-90 50 50)"
+                      />
+                    </svg>
+                    <div className="goal-ring-label">
+                      <div
+                        style={{
+                          fontSize: "1.5rem",
+                          fontWeight: "700",
+                          fontFamily: "var(--font-serif)",
+                        }}
+                      >
+                        {goalProgress}%
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "0.65rem",
+                          opacity: 0.8,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        of goal
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.8rem", opacity: 0.8 }}>
+                      {primaryGoalDerived.name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "1.1rem",
+                        fontWeight: "700",
+                        fontFamily: "var(--font-serif)",
+                      }}
+                    >
+                      {formatZAR(primaryGoalDerived.current)}{" "}
+                      <span style={{ opacity: 0.6, fontSize: "0.8rem" }}>
+                        / {formatZAR(primaryGoalDerived.target)}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div>
-                <div style={{ fontSize: "0.8rem", opacity: 0.8 }}>
-                  {profile.primaryGoal.name}
-                </div>
-                <div
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: "700",
-                    fontFamily: "var(--font-serif)",
-                  }}
-                >
-                  {formatZAR(profile.primaryGoal.current)}{" "}
-                  <span style={{ opacity: 0.6, fontSize: "0.8rem" }}>
-                    / {formatZAR(profile.primaryGoal.target)}
-                  </span>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
+          );
+        })()}
         <NudgeSystem />
 
         {/*    TABS    */}
@@ -387,7 +414,7 @@ export default function Snapshot() {
                   <h4>Vision Timeline</h4>
                   <p style={{ marginTop: "0.3rem" }}>
                     {monthsToGoal !== null && monthsToGoal > 0
-                      ? `At your current disposable income of ${formatZAR(disposable)}/month, you could reach your ${profile.primaryGoal.name} in approximately ${monthsToGoal} months (${Math.ceil(monthsToGoal / 12)} years).`
+                      ? `At your current disposable income of ${formatZAR(disposable)}/month, you could reach your ${primaryGoalDerived.name} in approximately ${monthsToGoal} months (${Math.ceil(monthsToGoal / 12)} years).`
                       : "Adjust your spending to free up more disposable income toward your goal."}
                   </p>
                 </div>
@@ -749,12 +776,21 @@ export default function Snapshot() {
         <div className="snapshot-next">
           <h4>Next steps based on your snapshot</h4>
           <div className="next-steps-grid">
-            <Link to="/tracks/global-citizen" className="next-card card-pinned">
+            <Link
+              to={`/tracks/${profile.selectedTrack || "global-citizen"}`}
+              className="next-card card-pinned"
+            >
               <span className="next-icon">◈</span>
               <div>
                 <div className="next-title">View Your Vision Track</div>
                 <div className="next-sub">
-                  See your Global Citizen milestones & progress
+                  See your{" "}
+                  {profile.selectedTrack === "homeowner"
+                    ? "Homeowner's"
+                    : profile.selectedTrack === "balanced"
+                      ? "Balanced Wealth"
+                      : "Global Citizen"}{" "}
+                  milestones & progress
                 </div>
               </div>
               <span className="next-arrow">→</span>

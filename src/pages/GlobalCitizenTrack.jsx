@@ -141,7 +141,7 @@ const MILESTONES = [
         id: "m4d",
         label: "TFSA: review lifetime limit progress (R500,000 lifetime cap)",
         detail:
-          "After 4 years of R36k contributions you have used R144k of your R500k lifetime TFSA limit. Monitor this and plan to fully utilise it over your working lifetime.",
+          "After 4 years of R46k contributions you have used R184k of your R500k lifetime TFSA limit. Monitor this and plan to fully utilise it over your working lifetime.",
       },
     ],
     color: "var(--terracotta)",
@@ -323,8 +323,16 @@ function MilestoneCard({ milestone, index }) {
 }
 
 export default function GlobalCitizenTrack() {
-  const { profile, takeHome, disposable } = useProfile();
+  const { profile, takeHome, disposable, totalSavings, primaryGoalDerived } = useProfile();
   const NUDGES = buildNudges(profile, takeHome, disposable);
+
+  // Dynamic allocation which means split disposable proportionally across the 4 buckets
+  // TFSA: R46k/year = R3833/mo cap; RA: 10% of take-home; Offshore: 40% of remainder; Emergency: rest
+  const tfsaMonthly = Math.min(3833, Math.round(disposable * 0.25));
+  const raMonthly = Math.min(Math.round(takeHome * 0.1), Math.round(disposable * 0.30));
+  const offshoreMonthly = Math.round(disposable * 0.35);
+  const emergencyMonthly = Math.max(0, disposable - tfsaMonthly - raMonthly - offshoreMonthly);
+  const totalAllocated = tfsaMonthly + raMonthly + offshoreMonthly + emergencyMonthly;
 
   return (
     <div className="track-detail-page">
@@ -442,28 +450,28 @@ export default function GlobalCitizenTrack() {
           <div className="rec-allocation">
             {[
               {
-                label: "TFSA (R46k/year)",
-                amount: 3833,
+                label: "TFSA (R46k/year cap)",
+                amount: tfsaMonthly,
                 color: "var(--dusty-blue)",
-                pct: Math.round((3833 / disposable) * 100),
+                pct: Math.round((tfsaMonthly / Math.max(1, disposable)) * 100),
               },
               {
-                label: "RA contribution",
-                amount: 5000,
+                label: "RA contribution (10% take-home)",
+                amount: raMonthly,
                 color: "var(--gold)",
-                pct: Math.round((5000 / disposable) * 100),
+                pct: Math.round((raMonthly / Math.max(1, disposable)) * 100),
               },
               {
                 label: "Offshore investment",
-                amount: 8000,
+                amount: offshoreMonthly,
                 color: "var(--sage)",
-                pct: Math.round((8000 / disposable) * 100),
+                pct: Math.round((offshoreMonthly / Math.max(1, disposable)) * 100),
               },
               {
-                label: "Emergency top-up",
-                amount: 2000,
+                label: "Emergency fund top-up",
+                amount: emergencyMonthly,
                 color: "var(--caramel)",
-                pct: Math.round((2000 / disposable) * 100),
+                pct: Math.round((emergencyMonthly / Math.max(1, disposable)) * 100),
               },
             ].map((r) => (
               <div key={r.label} className="rec-item">
@@ -488,8 +496,77 @@ export default function GlobalCitizenTrack() {
               color: "var(--text-muted)",
             }}
           >
-            Total allocation: {formatZAR(18000)}/month. Remaining discretionary:{" "}
-            {formatZAR(disposable - 18000)}/month.
+            Total allocation: {formatZAR(totalAllocated)}/month. Remaining discretionary:{" "}
+            {formatZAR(Math.max(0, disposable - totalAllocated))}/month.
+          </p>
+        </div>
+
+        {/*    LIVE SAVINGS PROGRESS    */}
+        <div className="card" style={{ marginBottom: "2rem" }}>
+          <h4 style={{ marginBottom: "1.25rem" }}>📊 Your Progress Toward This Vision</h4>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {[
+              {
+                label: "Offshore Portfolio",
+                current: profile.savings.offshore,
+                target: 500000,
+                color: "var(--dusty-blue)",
+                tooltip: "Target: R500,000 offshore portfolio over 5 years",
+              },
+              {
+                label: "TFSA (Lifetime R500k)",
+                current: profile.savings.tfsa,
+                target: 500000,
+                color: "var(--gold)",
+                tooltip: "Annual limit R46,000 , The lifetime limit R500,000",
+              },
+              {
+                label: "Retirement Annuity",
+                current: profile.savings.ra,
+                target: Math.round(takeHome * 0.1 * 60),
+                color: "var(--sage)",
+                tooltip: "Target: 10% of take-home for 5 years",
+              },
+              {
+                label: "Emergency Fund (3–6 months)",
+                current: profile.savings.emergencyFund,
+                target: Math.round(takeHome * 3),
+                color: "var(--caramel)",
+                tooltip: "Target: 3 months of take-home pay",
+              },
+              {
+                label: "Local Investments",
+                current: profile.savings.localInvestments,
+                target: 150000,
+                color: "var(--terracotta)",
+                tooltip: "Supporting target: R150,000 in local ETFs/unit trusts",
+              },
+            ].map((item) => {
+              const pct = Math.min(100, Math.round((item.current / item.target) * 100));
+              return (
+                <div key={item.label}>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.3rem", fontSize: "0.85rem" }}>
+                    <span style={{ fontWeight: 600 }}>{item.label}</span>
+                    <span style={{ color: "var(--text-muted)" }}>
+                      {formatZAR(item.current)} / {formatZAR(item.target)} ({pct}%)
+                    </span>
+                  </div>
+                  <div className="progress-bar-track">
+                    <div
+                      className="progress-bar-fill"
+                      style={{ width: `${pct}%`, background: item.color, transition: "width 0.4s ease" }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <p style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
+            Update your savings in the{" "}
+            <a href="/snapshot" style={{ color: "var(--dusty-blue)", textDecoration: "underline" }}>
+              Money Snapshot
+            </a>{" "}
+            and these bars update automatically.
           </p>
         </div>
 
