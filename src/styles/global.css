@@ -245,7 +245,7 @@ a:hover {
   padding: 1.25rem 1.5rem;
   position: relative;
   box-shadow: 2px 3px 12px var(--shadow-warm);
-  border-top: 3px solid var(--absa-red);
+
 }
 
 /* Highlighted / feature card */

@@ -34,7 +34,7 @@ function generateNudges(
   const lifestylePct =
     takeHome > 0 ? Math.round((lifestyleSpend / takeHome) * 100) : 0;
   const tfsaContrib = profile.savings.tfsa || 0;
-  const tfsaRemaining = Math.max(0, 36000 - tfsaContrib);
+  const tfsaRemaining = Math.max(0,  46000 - tfsaContrib);
   const emergencyFund = profile.savings.emergencyFund || 0;
   const emergencyTarget = takeHome * 3;
   const emergencyTargetFull = takeHome * 6;
@@ -124,19 +124,19 @@ function generateNudges(
       type: "tip",
       icon: "📈",
       title: `${formatZAR(tfsaRemaining)} of TFSA limit still available`,
-      text: `Your TFSA annual limit (R36,000) has ${formatZAR(tfsaRemaining)} remaining. Unused allowance is lost and you can't backdate missed years. Even ${formatZAR(Math.min(3000, tfsaRemaining))}/month would use it up before 28 February.`,
+      text: `Your TFSA annual limit (R 46,000) has ${formatZAR(tfsaRemaining)} remaining. Unused allowance is lost and you can't backdate missed years. Even ${formatZAR(Math.min(3000, tfsaRemaining))}/month would use it up before 28 February.`,
       action: null,
     });
   }
 
   //    CELEBRATE: TFSA maxed   
-  if (tfsaContrib >= 36000) {
+  if (tfsaContrib >=  46000) {
     nudges.push({
       id: "tfsa_maxed",
       type: "celebrate",
       icon: "⭐",
       title: "TFSA maxed for the year... well done!",
-      text: `You've contributed R36,000 to your TFSA this year. All growth on this is permanently tax-free. Now look at topping up your RA for the additional tax deduction benefit.`,
+      text: `You've contributed R 46,000 to your TFSA this year. All growth on this is permanently tax-free. Now look at topping up your RA for the additional tax deduction benefit.`,
       action: null,
     });
   }
