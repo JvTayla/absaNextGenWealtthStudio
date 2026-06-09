@@ -533,7 +533,7 @@ export default function BalancedTrack() {
         {/*    5-YEAR OUTCOMES PREVIEW    */}
         <div className="bw-outcomes card" style={{ marginBottom: "2rem" }}>
           <h4 style={{ marginBottom: "1rem" }}>
-            📊 Where You Could Be in 5 Years
+            Where You Could Be in 5 Years
           </h4>
           <p
             style={{
