@@ -9,7 +9,7 @@
 import { createContext, useContext, useState } from "react";
 
 //   South African SARS Tax Brackets (2024/25 tax year)
-// These are the real SARS brackets — we use these to estimate PAYE
+// These are the real SARS brackets and we use these to estimate PAYE
 export const SARS_BRACKETS = [
   { min: 0, max: 237100, base: 0, rate: 0.18 },
   { min: 237101, max: 370500, base: 42678, rate: 0.26 },
@@ -20,7 +20,7 @@ export const SARS_BRACKETS = [
   { min: 1817001, max: Infinity, base: 644489, rate: 0.45 },
 ];
 
-const PRIMARY_REBATE = 17235; // 2024/25 — update when 2025/26 confirmed by SARS
+const PRIMARY_REBATE = 17235; // 2024/25
 const UIF_RATE = 0.01; // 1% up to ceiling
 const UIF_CEILING = 17712; // monthly ceiling
 
@@ -104,10 +104,16 @@ export function UserProfileProvider({ children }) {
 
   // Update a nested field (e.g. fixedCosts.rent)
   function updateNested(section, key, value) {
-    setProfile((prev) => ({
-      ...prev,
-      [section]: { ...prev[section], [key]: value },
-    }));
+    setProfile((prev) => {
+      const next = {
+        ...prev,
+        [section]: { ...prev[section], [key]: value },
+      };
+      try {
+        localStorage.setItem("absa_user_profile", JSON.stringify(next));
+      } catch {}
+      return next;
+    });
   }
   function clearProfile() {
     localStorage.removeItem("absa_user_profile");

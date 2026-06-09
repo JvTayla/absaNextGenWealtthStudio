@@ -16,7 +16,7 @@ const TRACKS = [
   { id: "balanced", emoji: "⚖", name: "Balanced Wealth" },
 ];
 
-// ── Profile Edit Modal ──
+// Profile Edit Modal
 function ProfileModal({ onClose }) {
   const { profile, updateProfile, clearProfile } = useProfile();
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function ProfileModal({ onClose }) {
   }
 
   function handleEndSession() {
-    // Clear everything — profile, milestones, nudge dismissals, onboarding flag
+    // Clear everything
     clearProfile();
     localStorage.removeItem("absa_onboarded");
     localStorage.removeItem("absa_dismissed_nudges");
@@ -309,7 +309,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* User chip — clickable to open modal */}
+          {/* User chip - its clickable to open modal */}
           <div className="navbar-user hide-mobile">
             <button
               className="user-chip"
@@ -348,7 +348,7 @@ export default function Navbar() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu">
-            {/* Mobile user row — clickable */}
+            {/* Mobile user row  */}
             <button
               className="mobile-user mobile-user-btn"
               onClick={() => {
@@ -406,7 +406,7 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* Profile modal — rendered outside nav so z-index works */}
+      {/* Profile modal rendered outside nav so z-index works */}
       {profileOpen && <ProfileModal onClose={() => setProfileOpen(false)} />}
     </>
   );

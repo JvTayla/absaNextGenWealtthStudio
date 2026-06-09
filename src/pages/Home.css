@@ -1,8 +1,8 @@
-/* ============================================================
+/*                                                             
    HOME PAGE
-   ============================================================ */
+*/
 
-/* ── HERO ── */
+/*      HERO      */
 .hero {
   position: relative;
   padding: 5rem 0 4rem;
@@ -13,9 +13,21 @@
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 15% 85%, rgba(200,16,46,0.07) 0%, transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(201,151,42,0.08) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(212,184,150,0.06) 0%, transparent 60%);
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(200, 16, 46, 0.07) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(201, 151, 42, 0.08) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(212, 184, 150, 0.06) 0%,
+      transparent 60%
+    );
   pointer-events: none;
 }
 
@@ -26,7 +38,9 @@
   align-items: center;
 }
 
-.hero-content { max-width: 580px; }
+.hero-content {
+  max-width: 580px;
+}
 
 .hero-eyebrow {
   display: block;
@@ -65,7 +79,7 @@
   flex-wrap: wrap;
 }
 
-/* ── FLOATING CARD ── */
+/*      FLOATING CARD      */
 .hero-card-stack {
   position: relative;
   width: 280px;
@@ -90,7 +104,9 @@
   z-index: 1;
 }
 
-.fc-track-badge { margin-bottom: 1.2rem; }
+.fc-track-badge {
+  margin-bottom: 1.2rem;
+}
 
 .fc-goal-ring {
   position: relative;
@@ -98,7 +114,10 @@
   height: 90px;
   margin: 0 auto 1.2rem;
 }
-.ring-svg { width: 100%; height: 100%; }
+.ring-svg {
+  width: 100%;
+  height: 100%;
+}
 .ring-label {
   position: absolute;
   inset: 0;
@@ -137,7 +156,7 @@
   font-weight: 600;
 }
 
-/* ── VALUE PROPS ── */
+/*      VALUE PROPS      */
 .vp-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -170,9 +189,11 @@
   text-decoration: none;
   margin-top: 0.5rem;
 }
-.vp-link:hover { text-decoration: underline; }
+.vp-link:hover {
+  text-decoration: underline;
+}
 
-/* ── WHO SECTION ── */
+/*      WHO SECTION      */
 .who-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -258,7 +279,7 @@
   line-height: 1.5;
 }
 
-/* ── SA CALLOUT ── */
+/*      SA CALLOUT      */
 .sa-feature-card {
   overflow: hidden;
 }
@@ -280,8 +301,8 @@
 
 .sa-pill {
   padding: 0.4rem 0.9rem;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 500;
@@ -289,25 +310,43 @@
   white-space: nowrap;
 }
 
-/* ── HOME CTA ── */
+/*      HOME CTA      */
 .home-cta {
   padding-bottom: 5rem;
 }
 
-/* ── RESPONSIVE ── */
+/*      RESPONSIVE      */
 @media (max-width: 1100px) {
-  .vp-grid { grid-template-columns: repeat(2, 1fr); }
+  .vp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-card-stack { display: none; }
-  .who-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .sa-feature-inner { flex-direction: column; align-items: flex-start; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-card-stack {
+    display: none;
+  }
+  .who-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .sa-feature-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 600px) {
-  .vp-grid { grid-template-columns: 1fr; }
-  .hero { padding: 3rem 0 2.5rem; }
-  .who-stats { gap: 1.2rem; }
+  .vp-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 3rem 0 2.5rem;
+  }
+  .who-stats {
+    gap: 1.2rem;
+  }
 }

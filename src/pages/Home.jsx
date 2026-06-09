@@ -3,6 +3,30 @@ import { useProfile } from "../context/UserProfileContext";
 import { formatZAR, formatZARShort } from "../utils/finance";
 import "./Home.css";
 
+// Track metadata which mirrors the Onboarding TRACKS array so the home card
+// always reflects whatever track the user actually selected.
+
+const TRACK_META = {
+  "global-citizen": {
+    label: "Global Citizen Vision",
+    icon: "✈",
+    badgeClass: "badge-blue",
+    goalLabel: "Offshore Portfolio Target",
+  },
+  homeowner: {
+    label: "Homeowner's Vision",
+    icon: "🏠",
+    badgeClass: "badge-red",
+    goalLabel: "Home Deposit Target",
+  },
+  balanced: {
+    label: "Balanced Wealth Vision",
+    icon: "📈",
+    badgeClass: "badge-sage",
+    goalLabel: "Wealth Building Target",
+  },
+};
+
 // Admittedly this page doesnt match my wireframes exactly , i took some creatiev liberties,
 // but i thought that it would be betetr as a Introduction into what the site holds and a great way to allow 1st time users
 // to get excited about the possibilities of the site and what it can do for them,
@@ -14,6 +38,10 @@ import "./Home.css";
 
 export default function Home() {
   const { profile, disposable, takeHome, goalProgress } = useProfile();
+
+  // Resolve the active track meta which falls back to global-citizen if somehow undefined
+  const trackMeta =
+    TRACK_META[profile.selectedTrack] || TRACK_META["global-citizen"];
 
   return (
     <div className="home">
@@ -60,8 +88,8 @@ export default function Home() {
                   👋 Welcome back, {profile.name}
                 </div>
                 <div className="fc-track-badge">
-                  <span className="badge badge-blue">
-                    ✈ Global Citizen Vision
+                  <span className={`badge ${trackMeta.badgeClass}`}>
+                    {trackMeta.icon} {trackMeta.label}
                   </span>
                 </div>
                 <div className="fc-goal-ring">

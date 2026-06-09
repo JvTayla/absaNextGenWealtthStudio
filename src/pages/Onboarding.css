@@ -1,9 +1,9 @@
-/* ─────────────────────────────────────────────
+/*                                                                                           
    Onboarding.css — clean single card, no bubbles
    Plain warm background, scrapbook card styling
-───────────────────────────────────────────── */
+                                                                                           */
 
-/* ── Page ── */
+/*      Page      */
 .ob-page {
   min-height: 100vh;
   display: flex;
@@ -13,7 +13,7 @@
   background: var(--cream);
 }
 
-/* ── Card ── */
+/*      Card      */
 .ob-card {
   width: 100%;
   max-width: 560px;
@@ -27,7 +27,7 @@
   gap: 0;
 }
 
-/* ── Logo ── */
+/*      Logo      */
 .ob-logo-row {
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
 .ob-logo-img { height: 24px; object-fit: contain; }
 .ob-logo-name { font-size: 0.88rem; color: var(--text-muted); }
 
-/* ── Step dots ── */
+/*      Step dots      */
 .ob-dots {
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@
   margin: 0 0.35rem;
 }
 
-/* ── Step content ── */
+/*      Step content      */
 .ob-step { animation: ob-in 0.25s ease; }
 @keyframes ob-in {
   from { opacity: 0; transform: translateY(5px); }
@@ -105,7 +105,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* ── Fields ── */
+/*      Fields      */
 .ob-row-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -181,7 +181,7 @@
 .ob-pill:hover { border-color: var(--absa-red); color: var(--absa-red); }
 .ob-pill-on { background: var(--absa-red); border-color: var(--absa-red); color: white; }
 
-/* ── Step 2: Salary ── */
+/*      Step 2: Salary      */
 .ob-money-wrap {
   display: flex;
   align-items: center;
@@ -253,7 +253,7 @@
 .ob-red  { color: var(--absa-red)  !important; }
 .ob-green{ color: var(--sage)      !important; }
 
-/* ── Step 3: Spending ── */
+/*      Step 3: Spending      */
 .ob-spend-list {
   display: flex;
   flex-direction: column;
@@ -342,7 +342,7 @@
   line-height: 1.4;
 }
 
-/* ── Step 4: Tracks ── */
+/*      Step 4: Tracks      */
 .ob-track-list {
   display: flex;
   flex-direction: column;
@@ -383,7 +383,7 @@
 }
 .ob-track-check svg { width: 12px; height: 12px; }
 
-/* ── Step 5: Summary ── */
+/*      Step 5: Summary      */
 .ob-summary-track {
   display: flex;
   align-items: center;
@@ -503,7 +503,7 @@
 }
 .ob-mini-sep { opacity: 0.4; }
 
-/* ── Navigation ── */
+/*      Navigation      */
 .ob-nav {
   display: flex;
   justify-content: space-between;
@@ -530,7 +530,7 @@
   flex-shrink: 0;
 }
 
-/* ── Responsive ── */
+/*      Responsive      */
 @media (max-width: 600px) {
   .ob-page { padding: 1.5rem 0.75rem 3rem; }
   .ob-card { padding: 1.75rem 1.25rem 1.5rem; }

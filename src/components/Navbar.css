@@ -1,6 +1,6 @@
-/* ─────────────────────────────────────────────
-   Navbar.css — original styles + profile modal
-───────────────────────────────────────────── */
+/* 
+   Navbar.css
+ */
 
 .navbar {
   position: fixed;
@@ -105,7 +105,7 @@
   font-weight: 600;
 }
 
-/* User chip — now a button */
+/* User chip */
 .navbar-user {
   flex-shrink: 0;
 }
@@ -295,9 +295,9 @@
   }
 }
 
-/* ══════════════════════════════════════════
+/*  
    PROFILE MODAL
-══════════════════════════════════════════ */
+  */
 
 .modal-backdrop {
   position: fixed;

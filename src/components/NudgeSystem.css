@@ -1,8 +1,8 @@
-/* ─────────────────────────────────────────────
+/*
    NudgeSystem.css
-   Contextual financial nudge cards
+   This is Contextual financial nudge cards
    Types: warning (red), tip (green), info (blue), celebrate (gold)
-───────────────────────────────────────────── */
+*/
 
 .nudge-system {
   margin-bottom: 2rem;
@@ -43,7 +43,7 @@
   gap: 0.65rem;
 }
 
-/* ── Base card ── */
+/*    Base card */
 .nudge-card {
   display: flex;
   align-items: flex-start;
@@ -53,45 +53,47 @@
   border: 1.5px solid transparent;
   border-left-width: 4px;
   position: relative;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-/* ── Dismiss animation ── */
+/*    Dismiss animation    */
 .nudge-dismissing {
   opacity: 0;
   transform: translateX(12px);
   pointer-events: none;
 }
 
-/* ── Warning (red) ── */
+/*    Warning (red)    */
 .nudge-warning {
-  background: #FFF5F6;
+  background: #fff5f6;
   border-color: rgba(204, 36, 54, 0.15);
   border-left-color: var(--absa-red);
 }
 
-/* ── Tip (green/sage) ── */
+/*    Tip (green/sage)    */
 .nudge-tip {
-  background: #F0F8EE;
+  background: #f0f8ee;
   border-color: rgba(139, 175, 136, 0.2);
   border-left-color: var(--sage);
 }
 
-/* ── Info (blue) ── */
+/*    Info (blue)    */
 .nudge-info {
-  background: #EEF4FA;
+  background: #eef4fa;
   border-color: rgba(122, 156, 184, 0.2);
   border-left-color: var(--dusty-blue);
 }
 
-/* ── Celebrate (gold) ── */
+/*    Celebrate (gold)    */
 .nudge-celebrate {
-  background: #FEFAEE;
+  background: #fefaee;
   border-color: rgba(212, 184, 84, 0.25);
   border-left-color: var(--gold);
 }
 
-/* ── Icon ── */
+/*    Icon    */
 .nudge-icon {
   font-size: 1.15rem;
   flex-shrink: 0;
@@ -99,7 +101,7 @@
   line-height: 1;
 }
 
-/* ── Content ── */
+/*    Content    */
 .nudge-content {
   flex: 1;
   min-width: 0;
@@ -121,7 +123,7 @@
   line-height: 1.55;
 }
 
-/* ── Dismiss button ── */
+/*    Dismiss button    */
 .nudge-dismiss {
   flex-shrink: 0;
   background: none;
@@ -132,14 +134,16 @@
   color: var(--text-muted);
   padding: 0.1rem 0.25rem;
   border-radius: var(--radius-sm);
-  transition: color 0.15s, background 0.15s;
+  transition:
+    color 0.15s,
+    background 0.15s;
   margin-top: -2px;
   opacity: 0.5;
 }
 
 .nudge-dismiss:hover {
   opacity: 1;
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .nudge-dismiss:focus-visible {
@@ -149,10 +153,18 @@
 }
 
 /* Colour tint on dismiss per type */
-.nudge-warning .nudge-dismiss:hover { color: var(--absa-red); }
-.nudge-tip .nudge-dismiss:hover { color: var(--sage); }
-.nudge-info .nudge-dismiss:hover { color: var(--dusty-blue); }
-.nudge-celebrate .nudge-dismiss:hover { color: var(--gold); }
+.nudge-warning .nudge-dismiss:hover {
+  color: var(--absa-red);
+}
+.nudge-tip .nudge-dismiss:hover {
+  color: var(--sage);
+}
+.nudge-info .nudge-dismiss:hover {
+  color: var(--dusty-blue);
+}
+.nudge-celebrate .nudge-dismiss:hover {
+  color: var(--gold);
+}
 
 /* Responsive — stack more compactly on mobile */
 @media (max-width: 500px) {
@@ -160,6 +172,10 @@
     padding: 0.75rem 0.85rem 0.75rem 0.9rem;
     gap: 0.65rem;
   }
-  .nudge-title { font-size: 0.82rem; }
-  .nudge-text { font-size: 0.77rem; }
+  .nudge-title {
+    font-size: 0.82rem;
+  }
+  .nudge-text {
+    font-size: 0.77rem;
+  }
 }

@@ -1,12 +1,12 @@
-/* ─────────────────────────────────────────────
+/*                                                                                           
    OffshoreStudio.css
    Blue/gold theme for the Offshore Allocation Studio
    Unique styles: hero allocation control, FX timeline, year table
-───────────────────────────────────────────── */
+                                                                                           */
 
 .offshore-studio-page { padding: 2.5rem 0 4rem; }
 
-/* ── Hero allocation control ── */
+/*      Hero allocation control      */
 .offshore-hero-control {
   padding: 1.75rem;
   margin-bottom: 2rem;

@@ -173,7 +173,7 @@ export default function OffshoreStudio() {
     const totalContributed = currentPortfolio + monthlyInvestment * 12 * years;
     const totalGrowth = totalFV - totalContributed;
 
-    // Rand depreciation impact — how much extra ZAR the offshore portion gives
+    // Rand depreciation impact how much extra ZAR the offshore portion gives
     const offshoreWithoutDepreciation = futureValue(
       offshorePrincipal,
       offshoreMonthly,
@@ -182,7 +182,7 @@ export default function OffshoreStudio() {
     );
     const randBoost = offshoreFV_ZAR - offshoreWithoutDepreciation;
 
-    // Year-by-year data for the timeline chart (simplified — every year)
+    // Year-by-year data for the timeline chart (simplified every year)
     const yearData = Array.from({ length: years + 1 }, (_, y) => {
       const zarEnd_y = zarPerUSD * Math.pow(1 + randDepreciation, y);
       const loc = futureValue(localPrincipal, localMonthly, localReturn, y);
@@ -276,7 +276,7 @@ export default function OffshoreStudio() {
     verdictColor = "var(--sage)";
     verdictText = `Your current ${inputs.offshorePct}% offshore split is the optimal allocation for these assumptions, producing ${formatZARShort(results.totalFV)} after ${inputs.timeHorizon} years.`;
   } else if (inputs.offshorePct < 20) {
-    verdictLabel = "Too Local — Add Offshore Exposure";
+    verdictLabel = "Too Local, Add Offshore Exposure";
     verdictColor = "var(--absa-red)";
     verdictText = `With only ${inputs.offshorePct}% offshore, you have almost no protection against Rand depreciation. The Rand has weakened ~7% p.a. vs USD over the last decade. Moving to ${results.optimalPct}% offshore could add ${formatZARShort(results.optimalFV - results.totalFV)} to your portfolio over ${inputs.timeHorizon} years.`;
   } else if (inputs.offshorePct > 75) {
@@ -307,7 +307,7 @@ export default function OffshoreStudio() {
                 How much of your portfolio should be offshore? The Rand has
                 depreciated ~7% p.a. against the USD over the last decade. This
                 studio shows you exactly how different local/offshore splits
-                affect your real wealth — and finds your optimal allocation.
+                affect your real wealth and finds your optimal allocation.
               </p>
             </div>
             <div className="studio-badge">
@@ -316,7 +316,7 @@ export default function OffshoreStudio() {
           </div>
         </div>
 
-        {/* ── ALLOCATION CONTROL — the hero of this studio ── */}
+        {/* ALLOCATION CONTROL  the hero of this studio!*/}
         <div className="offshore-hero-control card">
           <div className="offshore-hero-top">
             <div>
@@ -475,7 +475,7 @@ export default function OffshoreStudio() {
                   step={10000}
                   onChange={set("currentPortfolio")}
                   format={(v) => formatZARShort(v)}
-                  tooltip="Your current total invested assets — TFSA, RA, ETFs, offshore investments. Pre-filled from your Snapshot if available."
+                  tooltip="Your current total invested assets including: TFSA, RA, ETFs, offshore investments. Pre-filled from your Snapshot if available."
                 />
                 <Slider
                   label="Offshore Allocation"
@@ -669,7 +669,7 @@ export default function OffshoreStudio() {
                   marginBottom: "1rem",
                 }}
               >
-                Portfolio value after {inputs.timeHorizon} years — scenario
+                Portfolio value after {inputs.timeHorizon} years - scenario
                 comparison
               </div>
               <div className="output-bar-group">

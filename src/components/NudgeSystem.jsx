@@ -3,7 +3,7 @@ import { useProfile } from "../context/UserProfileContext";
 import { formatZAR } from "../utils/finance";
 import "./NudgeSystem.css";
 
-// NudgeSystem — generates contextual financial nudges from the user's live profile data
+// NudgeSystem which generates contextual financial nudges from the user's live profile data
 // Nudges are dismissable and dismissals persist to localStorage
 // Types: 'warning' (red), 'tip' (green), 'info' (blue), 'celebrate' (gold)
 
@@ -49,7 +49,7 @@ function generateNudges(
       type: "warning",
       icon: "⚠️",
       title: "You're spending more than you earn",
-      text: `Your spending exceeds your take-home pay by ${formatZAR(Math.abs(disposable))}/month. Review your variable spending — dining, entertainment, and shopping are usually the quickest wins.`,
+      text: `Your spending exceeds your take-home pay by ${formatZAR(Math.abs(disposable))}/month. Review your variable spending like: dining, entertainment, and shopping are usually the quickest wins.`,
       action: null,
     });
   }
@@ -112,7 +112,7 @@ function generateNudges(
       type: "celebrate",
       icon: "🎉",
       title: "3-month emergency fund achieved!",
-      text: `You've hit your 3-month emergency target (${formatZAR(emergencyTarget)}). Consider building to 6 months (${formatZAR(emergencyTargetFull)}) for full security — or redirect surplus toward TFSA and investments.`,
+      text: `You've hit your 3-month emergency target (${formatZAR(emergencyTarget)}). Consider building to 6 months (${formatZAR(emergencyTargetFull)}) for full security or redirect surplus toward TFSA and investments.`,
       action: null,
     });
   }
@@ -124,7 +124,7 @@ function generateNudges(
       type: "tip",
       icon: "📈",
       title: `${formatZAR(tfsaRemaining)} of TFSA limit still available`,
-      text: `Your TFSA annual limit (R36,000) has ${formatZAR(tfsaRemaining)} remaining. Unused allowance is lost — you can't backdate missed years. Even ${formatZAR(Math.min(3000, tfsaRemaining))}/month would use it up before 28 February.`,
+      text: `Your TFSA annual limit (R36,000) has ${formatZAR(tfsaRemaining)} remaining. Unused allowance is lost and you can't backdate missed years. Even ${formatZAR(Math.min(3000, tfsaRemaining))}/month would use it up before 28 February.`,
       action: null,
     });
   }
@@ -135,7 +135,7 @@ function generateNudges(
       id: "tfsa_maxed",
       type: "celebrate",
       icon: "⭐",
-      title: "TFSA maxed for the year — well done!",
+      title: "TFSA maxed for the year... well done!",
       text: `You've contributed R36,000 to your TFSA this year. All growth on this is permanently tax-free. Now look at topping up your RA for the additional tax deduction benefit.`,
       action: null,
     });
@@ -184,7 +184,7 @@ function generateNudges(
       type: "celebrate",
       icon: "🏆",
       title: "Strong savings position!",
-      text: `Your total savings of ${formatZAR(totalSavings)} represent a solid financial foundation. You're ahead of most South Africans your age. Keep compounding — the next milestone is ${formatZAR(Math.ceil(totalSavings / 100000) * 100000)}.`,
+      text: `Your total savings of ${formatZAR(totalSavings)} represent a solid financial foundation. You're ahead of most South Africans your age. Keep compounding! The next milestone is ${formatZAR(Math.ceil(totalSavings / 100000) * 100000)}.`,
       action: null,
     });
   }

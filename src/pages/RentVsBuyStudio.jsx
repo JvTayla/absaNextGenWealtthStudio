@@ -8,7 +8,7 @@ import './RentVsBuyStudio.css';
 // Uses real SA financial context: transfer duty (SARS 2024/25), bond rates, levies, rates & taxes
 // Compares total wealth position of buying vs renting + investing the deposit over a chosen horizon
 
-// SA Transfer Duty — SARS 2024/25 table
+// SA Transfer Duty SARS 2024/25 table
 function calcTransferDuty(price) {
   if (price <= 1100000) return 0;
   if (price <= 1512500) return (price - 1100000) * 0.03;
@@ -22,7 +22,7 @@ const DEFAULTS = {
   // Property
   propertyPrice: 1800000,
   deposit: 300000,
-  bondRate: 0.115,         // 11.5% — prime rate
+  bondRate: 0.115,         // 11.5% which is a prime rate
   bondTermYears: 20,
   propertyGrowthRate: 0.06, // 6% p.a. SA historical average
   leviesMonthly: 2500,      // sectional title
@@ -32,7 +32,7 @@ const DEFAULTS = {
 
   // Renting
   monthlyRent: 16000,
-  rentIncreaseAnnual: 0.07, // 7% rental inflation — SA average
+  rentIncreaseAnnual: 0.07, // 7% rental inflation SA average
   depositInvestRate: 0.09,  // what you earn investing the deposit instead
 
   // Shared
@@ -191,7 +191,7 @@ export default function RentVsBuyStudio() {
         text: `Over ${inputs.timeHorizon} years, renting and investing your deposit builds ${formatZARShort(results.difference)} more wealth than buying. The high upfront costs (transfer duty ${formatZARShort(results.transferDuty)} + fees) and running costs haven't been recovered through property growth in this timeframe.`,
         sub: results.breakEvenYear
           ? `Buying only becomes the better choice at approximately Year ${results.breakEvenYear}. If you plan to stay for ${results.breakEvenYear}+ years, buying improves significantly.`
-          : `Try extending the time horizon — property typically outperforms over 10–15 year periods.`,
+          : `Try extending the time horizon, property typically outperforms over 10-15 year periods.`,
       };
 
   return (
@@ -207,7 +207,7 @@ export default function RentVsBuyStudio() {
               <h1>Rent vs Buy in South Africa</h1>
               <p className="studio-subtitle">
                 One of the biggest financial decisions you'll ever make. This studio runs the
-                real SA numbers — transfer duty, bond rates, levies, rental inflation — and
+                real SA numbers including: transfer duty, bond rates, levies, rental inflation, and
                 tells you which position builds more wealth over your chosen horizon.
               </p>
             </div>
@@ -273,7 +273,7 @@ export default function RentVsBuyStudio() {
                   tooltip="Municipal rates and taxes. Varies widely by municipality and property value. Budget R1,500–R3,500/month for most urban properties." />
                 <Slider label="Attorney & Registration Fees" value={inputs.attorneyFees} min={20000} max={80000} step={1000}
                   onChange={set('attorneyFees')} format={formatZAR}
-                  tooltip="Conveyancing attorney fees, bond registration, and deeds office fees. Get a quote — typically R30,000–R50,000 on a R1.8M property." />
+                  tooltip="Conveyancing attorney fees, bond registration, and deeds office fees. Get a quote typically R30,000-R50,000 on a R1.8M property." />
               </div>
             )}
 
@@ -471,7 +471,7 @@ export default function RentVsBuyStudio() {
               <h4 style={{ fontSize: '0.85rem', marginBottom: '0.4rem' }}>🇿🇦 South African Property Context</h4>
               <p style={{ fontSize: '0.8rem' }}>
                 SA bond rates are prime-linked (currently 11.5%). Property has grown 5–7% p.a. nationally, with
-                Cape Town outperforming at 8–10% in recent years. Transfer duty on a R1.8M property is R26,900 —
+                Cape Town outperforming at 8-10% in recent years. Transfer duty on a R1.8M property is R26,900,
                 this is one of the largest hidden costs first-time buyers overlook. Always model the full upfront
                 cash requirement before making an offer.
               </p>
@@ -484,10 +484,10 @@ export default function RentVsBuyStudio() {
           <h3 style={{ marginBottom: '1.25rem' }}>Key Concepts Explained</h3>
           <div className="concepts-grid">
             {[
-              { icon: '💸', title: 'Transfer Duty', text: "Transfer duty is a government tax paid to SARS on all property purchases above R1.1 million. It is calculated on a sliding scale — from 3% to 13% depending on price. It is paid upfront in cash, not included in your bond, and is non-negotiable." },
-              { icon: '🏗', title: 'Bond Amortisation', text: "In the early years of your bond, most of your repayment goes toward interest, not capital. On a R1.5M bond at 11.5%, roughly 78% of your first repayment is interest. Capital repayment builds slowly — this is why buying only starts making sense over longer time horizons." },
-              { icon: '📈', title: 'Opportunity Cost of Deposit', text: "Your deposit is not free money just because you own it. Invested in an ETF at 9–10% p.a., R300,000 becomes approximately R462,000 after 5 years. When you put it into a property instead, you forgo this growth. The model accounts for this explicitly." },
-              { icon: '🔑', title: 'Rental Inflation', text: "South African landlords typically increase rent by 6–10% annually. This means rent that looks cheap today can become expensive quickly. A R15,000 rent at 7% annual increase costs R21,000 in 5 years and R29,500 in 10 years — this is a key argument for buying long-term." },
+              { icon: '💸', title: 'Transfer Duty', text: "Transfer duty is a government tax paid to SARS on all property purchases above R1.1 million. It is calculated on a sliding scale which is from 3% to 13% depending on price. It is paid upfront in cash, not included in your bond, and is non-negotiable." },
+              { icon: '🏗', title: 'Bond Amortisation', text: "In the early years of your bond, most of your repayment goes toward interest, not capital. On a R1.5M bond at 11.5%, roughly 78% of your first repayment is interest. Capital repayment builds slowly this is why buying only starts making sense over longer time horizons." },
+              { icon: '📈', title: 'Opportunity Cost of Deposit', text: "Your deposit is not free money just because you own it. Invested in an ETF at 9-10% p.a., R300,000 becomes approximately R462,000 after 5 years. When you put it into a property instead, you forgo this growth. The model accounts for this explicitly." },
+              { icon: '🔑', title: 'Rental Inflation', text: "South African landlords typically increase rent by 6-10% annually. This means rent that looks cheap today can become expensive quickly. A R15,000 rent at 7% annual increase costs R21,000 in 5 years and R29,500 in 10 years this is a key argument for buying long-term." },
             ].map(c => (
               <div key={c.title} className="concept-card card-pinned">
                 <div className="concept-icon">{c.icon}</div>
