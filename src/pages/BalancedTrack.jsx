@@ -419,7 +419,6 @@ export default function BalancedTrack() {
               ))}
             </div>
           </div>
-
         </div>
 
         {/*    PHILOSOPHY    */}
