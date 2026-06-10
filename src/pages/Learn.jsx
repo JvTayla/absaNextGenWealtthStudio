@@ -1,16 +1,27 @@
 import { useState } from "react";
+import {
+  Search,
+  BookOpen,
+  CreditCard,
+  Building2,
+  Shield,
+  Globe,
+  BarChart2,
+  TrendingUp,
+  Landmark,
+  Layers,
+} from "lucide-react";
 import "./Learn.css";
 
 //I dont think this page was necessary for this assignment but in doing my research i wanted to help others learn about all these things,
-// It feels like a foreign concept to actually be taught financial terms and Tax terms in a digestable and easy way. 
-// I also linked a book ive been reading recently , I just founded my own company and learning finances and stuff has been a BIG Factor , so helping young people like myself is great. 
-
+// It feels like a foreign concept to actually be taught financial terms and Tax terms in a digestable and easy way.
+// I also linked a book ive been reading recently , I just founded my own company and learning finances and stuff has been a BIG Factor , so helping young people like myself is great.
 
 const CONCEPTS = [
   {
     id: "tfsa",
     category: "Savings Vehicles",
-    icon: "💳",
+    icon: "tfsa",
     title: "Tax-Free Savings Account (TFSA)",
     badge: "badge-sage",
     tagline: "The best starting investment for most young South Africans.",
@@ -35,7 +46,7 @@ Best used for: long-term equity investments (ETFs, unit trusts). Avoid holding c
   {
     id: "ra",
     category: "Savings Vehicles",
-    icon: "🏦",
+    icon: "ra",
     title: "Retirement Annuity (RA)",
     badge: "badge-blue",
     tagline: "Get a tax refund while saving for retirement.",
@@ -60,7 +71,7 @@ Best RA providers in SA: Allan Gray, Coronation, Ninety One (Investec), Sanlam a
   {
     id: "emergency-fund",
     category: "Foundations",
-    icon: "🛡",
+    icon: "shield",
     title: "Emergency Fund",
     badge: "badge-red",
     tagline: "Your financial immune system.",
@@ -89,7 +100,7 @@ Critical rule: Once used, replenish it before resuming investment contributions.
   {
     id: "offshore-allowance",
     category: "Offshore Investing",
-    icon: "🌍",
+    icon: "globe",
     title: "South African Offshore Allowance",
     badge: "badge-gold",
     tagline:
@@ -119,7 +130,7 @@ How to do it: EasyEquities USD (simplest), Sygnia Itrix offshore ETFs, or direct
   {
     id: "net-worth",
     category: "Foundations",
-    icon: "📊",
+    icon: "chart",
     title: "Net Worth",
     badge: "badge-sage",
     tagline: "The only financial number that really matters.",
@@ -148,7 +159,7 @@ Track it quarterly using a simple spreadsheet. Watch the trend over 12–24 mont
   {
     id: "compound-interest",
     category: "Investing",
-    icon: "📈",
+    icon: "trend",
     title: "Compound Interest",
     badge: "badge-blue",
     tagline: "Einstein called it the eighth wonder of the world.",
@@ -179,7 +190,7 @@ This is why the Global Citizen Vision starts investing in Year 1 - not Year 3. E
   {
     id: "prime-rate",
     category: "Debt & Credit",
-    icon: "🏛",
+    icon: "landmark",
     title: "SA Prime Lending Rate",
     badge: "badge-red",
     tagline: "The rate everything else in SA finance is priced off.",
@@ -210,7 +221,7 @@ SA interest rates have been high by global standards since 2021 due to inflation
   {
     id: "etf",
     category: "Investing",
-    icon: "🧩",
+    icon: "layers",
     title: "Exchange-Traded Funds (ETFs)",
     badge: "badge-gold",
     tagline: "The simplest, lowest-cost way to invest in the stock market.",
@@ -275,7 +286,9 @@ export default function Learn() {
         {/* Search + filter */}
         <div className="learn-controls">
           <div className="learn-search">
-            <span className="search-icon">⌕</span>
+            <span className="search-icon">
+              <Search size={16} />
+            </span>
             <input
               type="text"
               className="form-input"
@@ -315,9 +328,21 @@ export default function Learn() {
                 <div className="concept-card-left">
                   <div
                     className="concept-emoji-wrap"
-                    style={{ background: `${concept.color}22` }}
+                    style={{
+                      background: `${concept.color}22`,
+                      color: concept.color,
+                    }}
                   >
-                    {concept.icon}
+                    {{
+                      tfsa: <CreditCard size={20} />,
+                      ra: <Building2 size={20} />,
+                      shield: <Shield size={20} />,
+                      globe: <Globe size={20} />,
+                      chart: <BarChart2 size={20} />,
+                      trend: <TrendingUp size={20} />,
+                      landmark: <Landmark size={20} />,
+                      layers: <Layers size={20} />,
+                    }[concept.icon] ?? <BookOpen size={20} />}
                   </div>
                   <div>
                     <div className="concept-category">{concept.category}</div>
@@ -393,7 +418,15 @@ export default function Learn() {
                 color: "var(--text-muted)",
               }}
             >
-              <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🔍</div>
+              <div
+                style={{
+                  marginBottom: "0.5rem",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Search size={32} strokeWidth={1.5} />
+              </div>
               <p>
                 No concepts found for "{search}". Try a different search term.
               </p>
@@ -402,6 +435,209 @@ export default function Learn() {
         </div>
 
         {/* Deeper learning callout */}
+
+        {/* ===== PLATFORM COMPARISON TABLE ===== */}
+        <section
+          className="learn-platform-section"
+          style={{ marginTop: "3rem" }}
+        >
+          <div className="learn-section-header">
+            <span
+              className="hand-note"
+              style={{ fontSize: "1.4rem", color: "var(--absa-red)" }}
+            >
+              Where to invest
+            </span>
+            <h2 style={{ marginTop: "0.25rem" }}>
+              SA Investment Platform Comparison
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                marginTop: "0.4rem",
+                maxWidth: "600px",
+              }}
+            >
+              Choosing the right platform affects your fees, access, and
+              investment options over the long term. Here's how the main
+              platforms compare.
+            </p>
+          </div>
+          <div className="platform-table-wrap">
+            <table
+              className="platform-table"
+              role="table"
+              aria-label="SA investment platform comparison"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">Platform</th>
+                  <th scope="col">Best For</th>
+                  <th scope="col">TFSA</th>
+                  <th scope="col">Min. Investment</th>
+                  <th scope="col">Fees (approx.)</th>
+                  <th scope="col">Offshore Access</th>
+                  <th scope="col">Notable Feature</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    name: "EasyEquities",
+                    color: "var(--sage)",
+                    bestFor: "Beginners & ETF investors",
+                    tfsa: "✓ Yes",
+                    min: "R1",
+                    fees: "0.25% brokerage",
+                    offshore: "USD account (EE USD)",
+                    notable: "Fractional shares; most accessible SA platform",
+                  },
+                  {
+                    name: "Sygnia",
+                    color: "var(--dusty-blue)",
+                    bestFor: "Low-cost passive investors",
+                    tfsa: "✓ Yes",
+                    min: "R500/mo",
+                    fees: "0.1%–0.2% TER",
+                    offshore: "Itrix S&P 500 ETF",
+                    notable: "Lowest-fee RA and TFSA in SA",
+                  },
+                  {
+                    name: "ABSA Stockbrokers",
+                    color: "var(--absa-red)",
+                    bestFor: "Full-service banking integration",
+                    tfsa: "✓ Yes",
+                    min: "R1,000",
+                    fees: "0.4%–0.6% brokerage",
+                    offshore: "Via ABSA Forex",
+                    notable: "Seamless integration with ABSA banking",
+                  },
+                  {
+                    name: "Coronation",
+                    color: "var(--gold)",
+                    bestFor: "Active fund investors & RA",
+                    tfsa: "✓ Yes",
+                    min: "R500/mo",
+                    fees: "0.5%–1.5% TER",
+                    offshore: "Rand-hedged global funds",
+                    notable: "Strong long-term active management track record",
+                  },
+                ].map((p) => (
+                  <tr key={p.name}>
+                    <td>
+                      <span
+                        className="platform-name"
+                        style={{ color: p.color }}
+                      >
+                        {p.name}
+                      </span>
+                    </td>
+                    <td>{p.bestFor}</td>
+                    <td className="platform-yes">{p.tfsa}</td>
+                    <td>{p.min}</td>
+                    <td>{p.fees}</td>
+                    <td>{p.offshore}</td>
+                    <td>{p.notable}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p
+            style={{
+              fontSize: "0.78rem",
+              color: "var(--text-muted)",
+              marginTop: "0.75rem",
+            }}
+          >
+            Fees are approximate and may change. Always confirm current fees on
+            each platform's website before investing. TER = Total Expense Ratio.
+          </p>
+        </section>
+
+        {/* ===== GLOSSARY ===== */}
+        <section
+          className="learn-glossary-section"
+          style={{ marginTop: "3rem" }}
+        >
+          <div className="learn-section-header">
+            <span
+              className="hand-note"
+              style={{ fontSize: "1.4rem", color: "var(--absa-red)" }}
+            >
+              Quick reference
+            </span>
+            <h2 style={{ marginTop: "0.25rem" }}>Financial Glossary</h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                marginTop: "0.4rem",
+                maxWidth: "600px",
+              }}
+            >
+              Plain-language definitions for terms you'll encounter in SA
+              personal finance.
+            </p>
+          </div>
+          <div className="glossary-grid">
+            {[
+              {
+                term: "Amortisation",
+                def: "The process of paying off a loan (like a bond) in regular instalments over time. Early payments are mostly interest; later payments chip away at the capital.",
+              },
+              {
+                term: "Capital Gains Tax (CGT)",
+                def: "A tax on profit when you sell an asset for more than you paid. Primary residence has an R2M exclusion. Annual exclusion: R40,000. Effective rate depends on your marginal bracket.",
+              },
+              {
+                term: "Debt-to-Income Ratio",
+                def: "Your total monthly debt repayments divided by your gross monthly income. Banks use this to assess affordability. A ratio above 40% typically signals financial strain.",
+              },
+              {
+                term: "Discretionary Allowance",
+                def: "The R1.1 million per year that South Africans can invest offshore without SARB approval or tax clearance. Resets on 1 January each year.",
+              },
+              {
+                term: "FIRE",
+                def: 'Financial Independence, Retire Early. Based on the "4% rule" — if your portfolio equals 25× annual expenses, you can theoretically withdraw 4% per year indefinitely.',
+              },
+              {
+                term: "Marginal Tax Rate",
+                def: "The tax rate applied to your last rand of income — not your average rate. In SA, the top marginal rate is 45% (income above R1.73M). Most professionals fall in the 36–41% bracket.",
+              },
+              {
+                term: "Money Market Account",
+                def: "A low-risk, instantly accessible account earning close to the repo rate (currently ~8–9%). Used for emergency funds and short-term savings. Not suitable for long-term wealth building.",
+              },
+              {
+                term: "Provident Fund",
+                def: "A workplace retirement savings vehicle. Unlike an RA, contributions were once not taxable — this changed in 2021. Funds are locked in until retirement or resignation.",
+              },
+              {
+                term: "Rand-Hedged",
+                def: "Investments that naturally protect against Rand weakness — usually companies that earn foreign revenue (like Naspers/Prosus, BHP, Anglo American). Useful without moving money offshore.",
+              },
+              {
+                term: "Repo Rate",
+                def: "The rate at which the SA Reserve Bank lends to commercial banks. It drives prime (repo + 3.5%) which drives your home loan, car finance, and savings rates.",
+              },
+              {
+                term: "TER (Total Expense Ratio)",
+                def: "The annual cost of owning a fund, expressed as a percentage. Includes management fees, admin, and performance fees. A 1% TER difference costs ~20% of your final portfolio value over 30 years.",
+              },
+              {
+                term: "Transfer Duty",
+                def: "A government tax on property purchases above R1.1M, paid upfront in cash. Calculated on a sliding scale from 3% to 13%. Not included in your home loan.",
+              },
+            ].map((g) => (
+              <div key={g.term} className="glossary-item card-torn">
+                <span className="glossary-term">{g.term}</span>
+                <p className="glossary-def">{g.def}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <div
           className="learn-deeper card-feature"
           style={{ marginTop: "3rem", borderRadius: "var(--radius-xl)" }}

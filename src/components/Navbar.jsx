@@ -2,21 +2,30 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useProfile, calcTax } from "../context/UserProfileContext";
 import { formatZAR } from "../utils/finance";
+import {
+  Home,
+  BarChart2,
+  Map,
+  FlaskConical,
+  BookOpen,
+  Plane,
+  Building2,
+  Scale,
+  Edit2,
+  Check,
+  X,
+  Menu,
+} from "lucide-react";
 import "./Navbar.css";
-
-// NavLink handles active state automatically which is nice
-// spent way too long trying to do this manually before i figured that out
-// Last year this was such a tedious process adding it manually into each page :( Booo static websites and not knowing JS yet
 
 const CITIES = ["Cape Town", "Johannesburg", "Durban", "Pretoria", "Other"];
 
 const TRACKS = [
-  { id: "global-citizen", emoji: "✈", name: "Global Citizen" },
-  { id: "homeowner", emoji: "🏠", name: "Homeowner" },
-  { id: "balanced", emoji: "⚖", name: "Balanced Wealth" },
+  { id: "global-citizen", icon: <Plane size={14} />, name: "Global Citizen" },
+  { id: "homeowner", icon: <Building2 size={14} />, name: "Homeowner" },
+  { id: "balanced", icon: <Scale size={14} />, name: "Balanced Wealth" },
 ];
 
-// Profile Edit Modal
 function ProfileModal({ onClose }) {
   const { profile, updateProfile, clearProfile } = useProfile();
   const navigate = useNavigate();
@@ -52,11 +61,9 @@ function ProfileModal({ onClose }) {
   }
 
   function handleEndSession() {
-    // Clear everything
     clearProfile();
     localStorage.removeItem("absa_onboarded");
     localStorage.removeItem("absa_dismissed_nudges");
-    // Clear milestone keys
     ["global-citizen", "homeowner", "balanced"].forEach((track) => {
       [1, 2, 3, 4, 5].forEach((year) => {
         localStorage.removeItem(`gc_milestone_${year}`);
@@ -70,14 +77,10 @@ function ProfileModal({ onClose }) {
 
   const previewTax = calcTax(form.grossMonthly);
   const previewTakeHome = form.grossMonthly - previewTax;
-  const activeTrack = TRACKS.find((t) => t.id === form.selectedTrack);
 
   return (
     <>
-      {/* Backdrop */}
       <div className="modal-backdrop" onClick={onClose} aria-hidden="true" />
-
-      {/* Modal */}
       <div
         className="profile-modal"
         role="dialog"
@@ -94,12 +97,11 @@ function ProfileModal({ onClose }) {
             onClick={onClose}
             aria-label="Close profile"
           >
-            ×
+            <X size={18} />
           </button>
         </div>
 
         <div className="profile-modal-body">
-          {/* Name */}
           <div className="pm-field">
             <label className="pm-label" htmlFor="pm-name">
               First name
@@ -113,8 +115,6 @@ function ProfileModal({ onClose }) {
               placeholder="Your name"
             />
           </div>
-
-          {/* Age */}
           <div className="pm-field">
             <label className="pm-label" htmlFor="pm-age">
               Age
@@ -129,25 +129,26 @@ function ProfileModal({ onClose }) {
               max={60}
             />
           </div>
-
-          {/* City */}
           <div className="pm-field">
             <label className="pm-label">City</label>
-            <div className="pm-pill-group">
+            <div
+              className="pm-pill-group"
+              role="group"
+              aria-label="Select city"
+            >
               {CITIES.map((city) => (
                 <button
                   key={city}
                   type="button"
                   className={`pm-pill ${form.location === city ? "pm-pill-active" : ""}`}
                   onClick={() => set("location", city)}
+                  aria-pressed={form.location === city}
                 >
                   {city}
                 </button>
               ))}
             </div>
           </div>
-
-          {/* Salary */}
           <div className="pm-field">
             <label className="pm-label" htmlFor="pm-salary">
               Monthly gross salary
@@ -165,7 +166,6 @@ function ProfileModal({ onClose }) {
                 step={1000}
               />
             </div>
-            {/* Live PAYE preview */}
             <div className="pm-tax-preview">
               <span className="pm-tax-item">
                 PAYE:{" "}
@@ -182,11 +182,13 @@ function ProfileModal({ onClose }) {
               </span>
             </div>
           </div>
-
-          {/* Vision Track */}
           <div className="pm-field">
             <label className="pm-label">Active Vision Track</label>
-            <div className="pm-track-group">
+            <div
+              className="pm-track-group"
+              role="group"
+              aria-label="Select vision track"
+            >
               {TRACKS.map((track) => (
                 <button
                   key={track.id}
@@ -195,10 +197,10 @@ function ProfileModal({ onClose }) {
                   onClick={() => set("selectedTrack", track.id)}
                   aria-pressed={form.selectedTrack === track.id}
                 >
-                  <span>{track.emoji}</span>
+                  <span>{track.icon}</span>
                   <span>{track.name}</span>
                   {form.selectedTrack === track.id && (
-                    <span className="pm-track-check">✓</span>
+                    <Check size={14} className="pm-track-check" />
                   )}
                 </button>
               ))}
@@ -206,7 +208,6 @@ function ProfileModal({ onClose }) {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="profile-modal-footer">
           <button
             className="btn btn-ghost pm-end-btn"
@@ -218,19 +219,23 @@ function ProfileModal({ onClose }) {
             className={`btn btn-primary ${saved ? "btn-saved" : ""}`}
             onClick={handleSave}
           >
-            {saved ? "✓ Saved!" : "Save Changes"}
+            {saved ? (
+              <>
+                <Check size={14} /> Saved!
+              </>
+            ) : (
+              "Save Changes"
+            )}
           </button>
         </div>
 
-        {/* End session confirmation */}
         {showEndSession && (
           <div className="pm-confirm-overlay">
             <div className="pm-confirm-box">
               <h4>End your session?</h4>
               <p>
                 This clears all your profile data, milestone progress, and
-                settings. You'll go back to the onboarding screen. This cannot
-                be undone.
+                settings. You'll return to onboarding. This cannot be undone.
               </p>
               <div className="pm-confirm-actions">
                 <button
@@ -251,50 +256,55 @@ function ProfileModal({ onClose }) {
   );
 }
 
-//      Main Navbar     
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { profile } = useProfile();
 
   const navLinks = [
-    { to: "/", label: "Home", icon: "⌂" },
-    { to: "/snapshot", label: "My Snapshot", icon: "◎" },
-    { to: "/tracks", label: "Vision Tracks", icon: "◈" },
-    { to: "/studio", label: "Studio", icon: "⚗" },
-    { to: "/learn", label: "Learn", icon: "✦" },
+    { to: "/", label: "Home", icon: <Home size={15} /> },
+    { to: "/snapshot", label: "My Snapshot", icon: <BarChart2 size={15} /> },
+    { to: "/tracks", label: "Vision Tracks", icon: <Map size={15} /> },
+    { to: "/studio", label: "Studio", icon: <FlaskConical size={15} /> },
+    { to: "/learn", label: "Learn", icon: <BookOpen size={15} /> },
   ];
 
   const activeTrack =
     ["global-citizen", "homeowner", "balanced"].find(
       (t) => t === profile.selectedTrack,
     ) || "global-citizen";
+
   const trackLabel = {
-    "global-citizen": "✈ Global Citizen",
-    homeowner: "🏠 Homeowner",
-    balanced: "⚖ Balanced",
+    "global-citizen": "Global Citizen",
+    homeowner: "Homeowner",
+    balanced: "Balanced",
+  }[activeTrack];
+
+  const trackIcon = {
+    "global-citizen": <Plane size={12} />,
+    homeowner: <Building2 size={12} />,
+    balanced: <Scale size={12} />,
   }[activeTrack];
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" role="navigation" aria-label="Main navigation">
         <div className="navbar-inner container">
-          {/* Logo */}
           <Link
             to="/"
             className="navbar-logo"
             onClick={() => setMenuOpen(false)}
+            aria-label="ABSA NextGen Wealth Studio home"
           >
             <div className="logo-mark">
-              <img src="./absa-logo.png" alt="ABSA LOGO" className="logo-img" />
+              <img src="./absa-logo.png" alt="ABSA" className="logo-img" />
             </div>
             <div className="logo-text">
               <span className="logo-tagline">NextGen Wealth Studio</span>
             </div>
           </Link>
 
-          {/* Desktop nav links */}
-          <div className="navbar-links hide-mobile">
+          <div className="navbar-links hide-mobile" role="list">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
@@ -303,52 +313,51 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "nav-link-active" : ""}`
                 }
+                role="listitem"
               >
                 {link.label}
               </NavLink>
             ))}
           </div>
 
-          {/* User chip - its clickable to open modal */}
           <div className="navbar-user hide-mobile">
             <button
               className="user-chip"
               onClick={() => setProfileOpen(true)}
-              aria-label="Edit profile"
+              aria-label={`Edit profile for ${profile.name || "user"}`}
               title="Edit your profile"
             >
-              <div className="user-avatar">
+              <div className="user-avatar" aria-hidden="true">
                 {profile.name ? profile.name.charAt(0).toUpperCase() : "?"}
               </div>
               <div className="user-chip-text">
                 <span className="user-name">
                   {profile.name || "Set up profile"}
                 </span>
-                <span className="user-track">{trackLabel}</span>
+                <span className="user-track">
+                  {trackIcon} {trackLabel}
+                </span>
               </div>
-              <span className="user-chip-caret" aria-hidden="true">
-                ✎
-              </span>
+              <Edit2 size={13} className="user-chip-caret" aria-hidden="true" />
             </button>
           </div>
 
-          {/* Hamburger */}
           <button
             className="hamburger"
             onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
-            <span className={menuOpen ? "ham-open" : ""} />
-            <span className={menuOpen ? "ham-open" : ""} />
-            <span className={menuOpen ? "ham-open" : ""} />
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile menu */}
         {menuOpen && (
-          <div className="mobile-menu">
-            {/* Mobile user row  */}
+          <div
+            className="mobile-menu"
+            role="dialog"
+            aria-label="Mobile navigation"
+          >
             <button
               className="mobile-user mobile-user-btn"
               onClick={() => {
@@ -357,7 +366,7 @@ export default function Navbar() {
               }}
               aria-label="Edit profile"
             >
-              <div className="user-avatar">
+              <div className="user-avatar" aria-hidden="true">
                 {profile.name ? profile.name.charAt(0).toUpperCase() : "?"}
               </div>
               <div>
@@ -366,15 +375,11 @@ export default function Navbar() {
                 </div>
                 <div className="user-sub">{trackLabel} · Tap to edit</div>
               </div>
-              <span
-                style={{
-                  marginLeft: "auto",
-                  fontSize: "0.8rem",
-                  color: "var(--text-muted)",
-                }}
-              >
-                ✎
-              </span>
+              <Edit2
+                size={14}
+                style={{ marginLeft: "auto", color: "var(--text-muted)" }}
+                aria-hidden="true"
+              />
             </button>
 
             {navLinks.map((link) => (
@@ -387,12 +392,13 @@ export default function Navbar() {
                 }
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="mobile-nav-icon">{link.icon}</span>
+                <span className="mobile-nav-icon" aria-hidden="true">
+                  {link.icon}
+                </span>
                 {link.label}
               </NavLink>
             ))}
 
-            {/* Mobile end session */}
             <button
               className="mobile-end-session"
               onClick={() => {
@@ -400,13 +406,12 @@ export default function Navbar() {
                 setMenuOpen(false);
               }}
             >
-              ✎ Edit Profile / End Session
+              <Edit2 size={14} aria-hidden="true" /> Edit Profile / End Session
             </button>
           </div>
         )}
       </nav>
 
-      {/* Profile modal rendered outside nav so z-index works */}
       {profileOpen && <ProfileModal onClose={() => setProfileOpen(false)} />}
     </>
   );

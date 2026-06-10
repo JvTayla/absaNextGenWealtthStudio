@@ -2,6 +2,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../context/UserProfileContext";
 import { formatZAR } from "../utils/finance";
+import {
+  Home,
+  BarChart2,
+  Banknote,
+  Star,
+  Key,
+  ArrowLeft,
+  Building2,
+  TrendingUp,
+  ChevronDown,
+  ChevronUp,
+  CheckCircle,
+} from "lucide-react";
 import "./HomeownerTrack.css";
 
 // Homeowner Track which outlines a 5-year roadmap to first property ownership in South Africa
@@ -210,22 +223,22 @@ function buildNudges(profile, takeHome, disposable) {
 
   return [
     {
-      icon: "🏠",
+      icon: <Home size={20} />,
       text: monthsToDeposit
-        ? `Saving ${formatZAR(monthlySavingCapacity)}/month, you could reach a R300,000 deposit in approximately ${monthsToDeposit} months . This is your Year 2 target.`
-        : `Build up your savings capacity first ... your current disposable income is tight. Review your fixed costs in the Snapshot.`,
+        ? `Saving ${formatZAR(monthlySavingCapacity)}/month, you could reach a R300,000 deposit in approximately ${monthsToDeposit} months. This is your Year 2 target.`
+        : `Build up your savings capacity first — your current disposable income is tight. Review your fixed costs in the Snapshot.`,
     },
     {
-      icon: "📊",
+      icon: <BarChart2 size={20} />,
       text: `Your debt-to-income ratio is currently ${dtiRatio}%. Banks prefer under 35% for home loan approval. ${dtiRatio > 35 ? "Reducing your monthly debt obligations will directly increase the bond amount you qualify for." : "You're in good shape for bond qualification."}`,
     },
     {
-      icon: "💰",
-      text: `Your current savings of ${formatZAR(currentSavings)} in a MoneyMarket account at 8.5% p.a. earns approximately ${formatZAR(depositInterestPA)}/year in interest while you wait. Make your deposit work.`,
+      icon: <Banknote size={20} />,
+      text: `Your current savings of ${formatZAR(currentSavings)} in a Money Market account at 8.5% p.a. earns approximately ${formatZAR(depositInterestPA)}/year in interest while you wait. Make your deposit work.`,
     },
     {
-      icon: "⭐",
-      text: `Transfer duty on a R1.8M property is R26,900. Add R35,000 in attorney fees and you need ${formatZAR(depositTarget + 61900)} total upfront , Try and plan this into your savings target from Year 2.`,
+      icon: <Star size={20} />,
+      text: `Transfer duty on a R1.8M property is R26,900. Add R35,000 in attorney fees and you need ${formatZAR(depositTarget + 61900)} total upfront — plan this into your savings target from Year 2.`,
     },
   ];
 }
@@ -306,7 +319,9 @@ function MilestoneCard({ milestone, index }) {
               {statusLabel}
             </span>
           </div>
-          <span className="milestone-toggle">{open ? "▲" : "▼"}</span>
+          <span className="milestone-toggle" aria-hidden="true">
+            {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </span>
         </div>
       </div>
 
@@ -386,7 +401,9 @@ export default function HomeownerTrack() {
             </Link>
             <div className="track-badge-row">
               {profile.selectedTrack === "homeowner" && (
-                <span className="badge badge-red">🏠 Your Active Vision</span>
+                <span className="badge badge-red">
+                  <Home size={11} /> Your Active Vision
+                </span>
               )}
               <span className="badge badge-gold">Homeowner Track</span>
             </div>
@@ -414,9 +431,16 @@ export default function HomeownerTrack() {
 
           <div className="track-hero-visual">
             <div className="moodboard ho-moodboard">
-              {["🏠", "🔑", "📋", "🏦", "📈", "⭐"].map((e, i) => (
+              {[
+                <Home size={22} />,
+                <Key size={22} />,
+                <BarChart2 size={22} />,
+                <Building2 size={22} />,
+                <TrendingUp size={22} />,
+                <Star size={22} />,
+              ].map((icon, i) => (
                 <div key={i} className={`moodboard-tile moodboard-${i}`}>
-                  {e}
+                  {icon}
                 </div>
               ))}
               <div className="moodboard-label hand-note">home</div>

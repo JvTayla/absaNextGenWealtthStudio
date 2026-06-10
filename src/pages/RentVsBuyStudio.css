@@ -3,7 +3,9 @@
    Extends CarStudio.css patterns — gold/blue theme
                                                                                            */
 
-.rvb-studio-page { padding: 2.5rem 0 4rem; }
+.rvb-studio-page {
+  padding: 2.5rem 0 4rem;
+}
 
 /* Metrics bar across the top */
 .rvb-metrics-bar {
@@ -43,7 +45,9 @@
 }
 
 /* Wealth comparison */
-.rvb-wealth-compare { margin-top: 1rem; }
+.rvb-wealth-compare {
+  margin-top: 1rem;
+}
 
 /* Rent note & assumptions box */
 .rvb-rent-note {
@@ -73,4 +77,50 @@
   .rvb-metrics-bar .rvb-metric-card:last-child {
     grid-column: span 2;
   }
+}
+/* ===== CHART SECTION ===== */
+.rvb-chart-section {
+  border: 1px solid var(--border-light);
+}
+.rvb-chart-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+.rvb-chart-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+.rvb-chart-wrap {
+  width: 100%;
+}
+.rvb-chart-tooltip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  box-shadow: 0 4px 16px var(--shadow-warm);
+}
+.rvb-chart-tooltip-year {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  font-family: var(--font-serif);
+}
+.rvb-chart-tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-secondary);
+}
+.rvb-chart-tooltip-row strong {
+  margin-left: auto;
+  color: var(--text-primary);
 }

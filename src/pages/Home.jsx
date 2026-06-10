@@ -1,26 +1,33 @@
 import { Link } from "react-router-dom";
 import { useProfile } from "../context/UserProfileContext";
 import { formatZAR, formatZARShort } from "../utils/finance";
+import {
+  Plane,
+  Home as HomeIcon,
+  TrendingUp,
+  FlaskConical,
+  Building2,
+  Globe,
+  BarChart2,
+} from "lucide-react";
 import "./Home.css";
 
-// Track metadata which mirrors the Onboarding TRACKS array so the home card
-// always reflects whatever track the user actually selected.
 const TRACK_META = {
   "global-citizen": {
     label: "Global Citizen Vision",
-    icon: "✈",
+    icon: <Plane size={18} />,
     badgeClass: "badge-blue",
     goalLabel: "Offshore Portfolio Target",
   },
   homeowner: {
     label: "Homeowner's Vision",
-    icon: "🏠",
+    icon: <Building2 size={18} />,
     badgeClass: "badge-red",
     goalLabel: "Home Deposit Target",
   },
   balanced: {
     label: "Balanced Wealth Vision",
-    icon: "📈",
+    icon: <TrendingUp size={18} />,
     badgeClass: "badge-sage",
     goalLabel: "Wealth Building Target",
   },
@@ -36,7 +43,8 @@ const TRACK_META = {
 // and letting people add images ? Perchance so they can create a mock vision board.
 
 export default function Home() {
-  const { profile, disposable, takeHome, goalProgress, primaryGoalDerived } = useProfile();
+  const { profile, disposable, takeHome, goalProgress, primaryGoalDerived } =
+    useProfile();
 
   // Resolve the active track meta which falls back to global-citizen if somehow undefined
   const trackMeta =
@@ -123,10 +131,15 @@ export default function Home() {
                   <span className="zar-amount">{formatZAR(disposable)}</span>
                 </div>
                 <div className="fc-stat">
-                  <span className="fc-stat-label">{primaryGoalDerived.name}</span>
+                  <span className="fc-stat-label">
+                    {primaryGoalDerived.name}
+                  </span>
                   <span className="zar-amount">
                     {formatZARShort(primaryGoalDerived.current)}
-                    <span style={{fontSize:"0.7rem", opacity:0.6}}> / {formatZARShort(primaryGoalDerived.target)}</span>
+                    <span style={{ fontSize: "0.7rem", opacity: 0.6 }}>
+                      {" "}
+                      / {formatZARShort(primaryGoalDerived.target)}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -154,7 +167,7 @@ export default function Home() {
           <div className="vp-grid">
             {[
               {
-                icon: "◎",
+                icon: <BarChart2 size={22} />,
                 color: "var(--absa-red)",
                 title: "Money Snapshot",
                 desc: "See your take-home pay after SARS tax, your spending breakdown, and exactly how much you have left to build wealth with every month.",
@@ -162,15 +175,15 @@ export default function Home() {
                 linkLabel: "View Snapshot",
               },
               {
-                icon: "◈",
+                icon: <Globe size={22} />,
                 color: "var(--gold)",
                 title: "Vision Tracks",
-                desc: "Choose a 5-year roadmap designed for your goals whether that's offshore investing, property ownership, or balanced wealth-building.",
+                desc: "Choose a 5-year roadmap designed for your goals — whether that's offshore investing, property ownership, or balanced wealth-building.",
                 link: "/tracks",
                 linkLabel: "Choose a Track",
               },
               {
-                icon: "⚗",
+                icon: <FlaskConical size={22} />,
                 color: "var(--dusty-blue)",
                 title: "Simulation Studio",
                 desc: 'Ask "what if" without real-world consequences. Compare financing a luxury car versus investing the difference. See the 5-year impact.',
@@ -178,10 +191,10 @@ export default function Home() {
                 linkLabel: "Enter the Studio",
               },
               {
-                icon: "✦",
+                icon: <HomeIcon size={22} />,
                 color: "var(--sage)",
                 title: "Financial Education",
-                desc: "From TFSA limits to offshore allowance rules learn what every financial term means and why it matters for your specific situation.",
+                desc: "From TFSA limits to offshore allowance rules — learn what every financial term means and why it matters for your specific situation.",
                 link: "/learn",
                 linkLabel: "Start Learning",
               },
@@ -316,11 +329,11 @@ export default function Home() {
               <div className="sa-pills">
                 {[
                   "📊 SARS PAYE Calculator",
-                  "🏠 SA Bond Rates",
+                  "SA Bond Rates",
                   "💰 TFSA & RA Rules",
-                  "🌍 Offshore Allowance",
+                  "Offshore Allowance",
                   "🚗 Vehicle Finance Rates",
-                  "📈 JSE & Global ETFs",
+                  "JSE & Global ETFs",
                 ].map((pill) => (
                   <span key={pill} className="sa-pill">
                     {pill}

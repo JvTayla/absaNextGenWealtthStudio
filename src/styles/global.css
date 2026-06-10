@@ -245,20 +245,15 @@ a:hover {
   padding: 1.25rem 1.5rem;
   position: relative;
   box-shadow: 2px 3px 12px var(--shadow-warm);
-
 }
 
 /* Highlighted / feature card */
 .card-feature {
-  background: linear-gradient(
-    135deg,
-    var(--absa-red) 0%,
-    var(--absa-red-dark) 100%
-  );
+  background: var(--absa-red);
   color: white;
   border-radius: var(--radius-xl);
   padding: 2rem;
-  box-shadow: 4px 8px 28px rgba(200, 16, 46, 0.3);
+  box-shadow: 4px 8px 28px rgba(200, 16, 46, 0.25);
 }
 
 .card-feature h1,
@@ -270,11 +265,11 @@ a:hover {
 
 /* Gold accent card */
 .card-gold {
-  background: linear-gradient(135deg, #fdf5e0 0%, #fae8b0 100%);
+  background: #fef9ec;
   border: 1.5px solid var(--gold);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: 2px 4px 14px rgba(201, 151, 42, 0.2);
+  box-shadow: 2px 4px 14px rgba(201, 151, 42, 0.15);
 }
 
 /*   
@@ -331,7 +326,7 @@ a:hover {
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, var(--gold) 0%, #a8780f 100%);
+  background: var(--gold);
   color: white;
   box-shadow: 0 4px 14px rgba(201, 151, 42, 0.4);
 }
@@ -474,11 +469,7 @@ a:hover {
 .progress-bar-fill {
   height: 100%;
   border-radius: var(--radius-full);
-  background: linear-gradient(
-    90deg,
-    var(--absa-red) 0%,
-    var(--terracotta) 100%
-  );
+  background: var(--absa-red);
   transition: width 0.6s ease;
 }
 

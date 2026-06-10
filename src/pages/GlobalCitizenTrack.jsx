@@ -2,6 +2,24 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../context/UserProfileContext";
 import { formatZAR } from "../utils/finance";
+import {
+  Globe,
+  Lightbulb,
+  TrendingUp,
+  Shield,
+  CreditCard,
+  Link2,
+  ChevronDown,
+  ChevronUp,
+  CheckCircle,
+  Circle,
+  ArrowLeft,
+  Plane,
+  BarChart2,
+  Banknote,
+  Map,
+  Building,
+} from "lucide-react";
 import "./GlobalCitizenTrack.css";
 
 // progress tracked locally with useState - It resets on refresh which is fine for A2, Ill fix it to store locally in next Iteration
@@ -183,6 +201,106 @@ const MILESTONES = [
   },
 ];
 
+// ===== 5-YEAR TIMELINE STRIP =====
+const TIMELINE_MILESTONES = [
+  {
+    year: 1,
+    label: "Foundation",
+    color: "var(--dusty-blue)",
+    icon: <Shield size={14} />,
+  },
+  {
+    year: 2,
+    label: "Tax Optimise",
+    color: "var(--gold)",
+    icon: <Banknote size={14} />,
+  },
+  {
+    year: 3,
+    label: "Go Offshore",
+    color: "var(--sage)",
+    icon: <Globe size={14} />,
+  },
+  {
+    year: 4,
+    label: "Passive Income",
+    color: "var(--terracotta)",
+    icon: <TrendingUp size={14} />,
+  },
+  {
+    year: 5,
+    label: "Independence",
+    color: "var(--absa-red)",
+    icon: <Plane size={14} />,
+  },
+];
+
+function TimelineStrip({ completions }) {
+  // completions: { 1: 0-100, 2: 0-100, ... } progress per year
+  return (
+    <section
+      className="gc-timeline-strip"
+      aria-label="5-year progress timeline"
+    >
+      <div className="gc-timeline-track">
+        {TIMELINE_MILESTONES.map((m, i) => {
+          const pct = completions[m.year] ?? 0;
+          const done = pct === 100;
+          const active = pct > 0 && pct < 100;
+          return (
+            <div key={m.year} className="gc-timeline-item">
+              {/* connector line */}
+              {i < TIMELINE_MILESTONES.length - 1 && (
+                <div
+                  className="gc-timeline-connector"
+                  style={{
+                    background: done ? m.color : "var(--border)",
+                  }}
+                  aria-hidden="true"
+                />
+              )}
+              {/* dot */}
+              <div
+                className={`gc-timeline-dot ${done ? "gc-dot-done" : active ? "gc-dot-active" : "gc-dot-pending"}`}
+                style={{
+                  borderColor: m.color,
+                  background: done
+                    ? m.color
+                    : active
+                      ? `${m.color}33`
+                      : "var(--bg-card)",
+                }}
+                aria-label={`Year ${m.year}: ${m.label} — ${pct}% complete`}
+              >
+                {done ? (
+                  <CheckCircle size={16} color="white" />
+                ) : (
+                  <span style={{ color: done ? "white" : m.color }}>
+                    {m.icon}
+                  </span>
+                )}
+              </div>
+              {/* label */}
+              <div className="gc-timeline-label">
+                <span className="gc-timeline-year" style={{ color: m.color }}>
+                  Yr {m.year}
+                </span>
+                <span className="gc-timeline-name">{m.label}</span>
+                <span
+                  className="gc-timeline-pct"
+                  style={{ color: done ? m.color : "var(--text-muted)" }}
+                >
+                  {done ? "✓ Done" : active ? `${pct}%` : "Not started"}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function buildNudges(profile, takeHome, disposable) {
   const raMonthly = Math.round(takeHome * 0.1);
   const raTaxSave = Math.round(raMonthly * 0.39 * 12);
@@ -193,20 +311,20 @@ function buildNudges(profile, takeHome, disposable) {
 
   return [
     {
-      icon: "💡",
-      text: `You have ${formatZAR(profile.savings.emergencyFund)} in savings! Moving some into a TFSA shelters all future growth from tax permanently.`,
+      icon: <Lightbulb size={20} />,
+      text: `You have ${formatZAR(profile.savings.emergencyFund)} in savings. Moving some into a TFSA shelters all future growth from tax permanently.`,
     },
     {
-      icon: "📊",
-      text: `Contributing ${formatZAR(raMonthly)}/month to an RA could save you approximately ${formatZAR(raTaxSave)} in PAYE annually at your marginal tax bracket.`,
+      icon: <BarChart2 size={20} />,
+      text: `Contributing ${formatZAR(raMonthly)}/month to an RA could save approximately ${formatZAR(raTaxSave)} in PAYE annually at your marginal tax bracket.`,
     },
     {
-      icon: "🌍",
+      icon: <Globe size={20} />,
       text: `Consider using your annual R1.1 million offshore discretionary allowance before the SA tax year ends on 28 February.`,
     },
     {
-      icon: "⚡",
-      text: `Investing ${formatZAR(investAmount)}/month (50% of your disposable income) in a global ETF at 9% p.a. could grow to approximately ${formatZAR(fiveYearFV)} after 5 years.`,
+      icon: <TrendingUp size={20} />,
+      text: `Investing ${formatZAR(investAmount)}/month (50% of disposable income) in a global ETF at 9% p.a. could grow to approximately ${formatZAR(fiveYearFV)} after 5 years.`,
     },
   ];
 }
@@ -276,7 +394,9 @@ function MilestoneCard({ milestone, index }) {
               {statusLabel}
             </span>
           </div>
-          <span className="milestone-toggle">{open ? "▲" : "▼"}</span>
+          <span className="milestone-toggle" aria-hidden="true">
+            {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </span>
         </div>
       </div>
 
@@ -323,28 +443,82 @@ function MilestoneCard({ milestone, index }) {
 }
 
 export default function GlobalCitizenTrack() {
-  const { profile, takeHome, disposable, totalSavings, primaryGoalDerived } = useProfile();
+  const { profile, takeHome, disposable, totalSavings, primaryGoalDerived } =
+    useProfile();
   const NUDGES = buildNudges(profile, takeHome, disposable);
 
-  // Dynamic allocation which means split disposable proportionally across the 4 buckets
-  // TFSA: R46k/year = R3833/mo cap; RA: 10% of take-home; Offshore: 40% of remainder; Emergency: rest
+  // Per-year progress for timeline strip
+  const yearProgress = Object.fromEntries(
+    MILESTONES.map((m) => {
+      try {
+        const saved = localStorage.getItem(`gc_milestone_${m.year}`);
+        if (saved) {
+          const completions = JSON.parse(saved);
+          const done = Object.values(completions).filter(Boolean).length;
+          return [m.year, Math.round((done / m.goals.length) * 100)];
+        }
+      } catch {}
+      return [m.year, 0];
+    }),
+  );
+
   const tfsaMonthly = Math.min(3833, Math.round(disposable * 0.25));
-  const raMonthly = Math.min(Math.round(takeHome * 0.1), Math.round(disposable * 0.30));
+  const raMonthly = Math.min(
+    Math.round(takeHome * 0.1),
+    Math.round(disposable * 0.3),
+  );
   const offshoreMonthly = Math.round(disposable * 0.35);
-  const emergencyMonthly = Math.max(0, disposable - tfsaMonthly - raMonthly - offshoreMonthly);
-  const totalAllocated = tfsaMonthly + raMonthly + offshoreMonthly + emergencyMonthly;
+  const emergencyMonthly = Math.max(
+    0,
+    disposable - tfsaMonthly - raMonthly - offshoreMonthly,
+  );
+  const totalAllocated =
+    tfsaMonthly + raMonthly + offshoreMonthly + emergencyMonthly;
+
+  const PILLARS = [
+    {
+      icon: <Shield size={22} />,
+      title: "Currency Protection",
+      desc: "Offshore exposure protects against Rand depreciation. Even at lower base returns, USD assets often outperform in ZAR terms.",
+    },
+    {
+      icon: <CreditCard size={22} />,
+      title: "Tax Efficiency First",
+      desc: "TFSA and RA contributions reduce your taxable income and grow tax-free. Use these fully before any taxable investment.",
+    },
+    {
+      icon: <Link2 size={22} />,
+      title: "Location Independence",
+      desc: "Building income streams and assets that don't require you to be in one country gives you choices others won't have.",
+    },
+  ];
+
+  const MOODBOARD_ICONS = [
+    <Plane size={22} />,
+    <Globe size={22} />,
+    <TrendingUp size={22} />,
+    <Banknote size={22} />,
+    <Map size={22} />,
+    <Building size={22} />,
+  ];
 
   return (
-    <div className="track-detail-page">
+    <main className="track-detail-page">
       <div className="container">
-        {/*    HERO    */}
-        <div className="track-hero">
+        {/* HERO */}
+        <header className="track-hero">
           <div className="track-hero-content">
-            <Link to="/tracks" className="back-link">
-              ← All Vision Tracks
+            <Link
+              to="/tracks"
+              className="back-link"
+              aria-label="Back to all vision tracks"
+            >
+              <ArrowLeft size={16} /> All Vision Tracks
             </Link>
             <div className="track-badge-row">
-              <span className="badge badge-blue">✈ Your Active Vision</span>
+              <span className="badge badge-blue">
+                <Plane size={11} /> Your Active Vision
+              </span>
               <span className="badge badge-gold">Global Citizen</span>
             </div>
             <h1>The Global Citizen Vision</h1>
@@ -367,20 +541,23 @@ export default function GlobalCitizenTrack() {
               ))}
             </div>
           </div>
-          <div className="track-hero-visual">
+          <div className="track-hero-visual" aria-hidden="true">
             <div className="moodboard">
-              {["✈", "🌍", "📈", "💰", "🗺", "🏦"].map((e, i) => (
+              {MOODBOARD_ICONS.map((icon, i) => (
                 <div key={i} className={`moodboard-tile moodboard-${i}`}>
-                  {e}
+                  {icon}
                 </div>
               ))}
               <div className="moodboard-label hand-note">freedom</div>
             </div>
           </div>
-        </div>
+        </header>
 
-        {/*    PHILOSOPHY    */}
-        <div className="philosophy-section card">
+        {/* TIMELINE STRIP */}
+        <TimelineStrip completions={yearProgress} />
+
+        {/* PHILOSOPHY */}
+        <section className="philosophy-section card">
           <div className="philosophy-inner">
             <div>
               <h3>The Philosophy Behind This Track</h3>
@@ -403,23 +580,7 @@ export default function GlobalCitizenTrack() {
               </p>
             </div>
             <div className="philosophy-pillars">
-              {[
-                {
-                  icon: "🛡",
-                  title: "Currency Protection",
-                  desc: "Offshore exposure protects against Rand depreciation. Even at lower base returns, USD assets often outperform in ZAR terms.",
-                },
-                {
-                  icon: "💳",
-                  title: "Tax Efficiency First",
-                  desc: "TFSA and RA contributions reduce your taxable income and grow tax-free. Use these fully before any taxable investment.",
-                },
-                {
-                  icon: "🔗",
-                  title: "Location Independence",
-                  desc: "Building income streams and assets that don't require you to be in one country gives you choices others won't have.",
-                },
-              ].map((p) => (
+              {PILLARS.map((p) => (
                 <div key={p.title} className="pillar-card card-torn">
                   <div className="pillar-icon">{p.icon}</div>
                   <h4>{p.title}</h4>
@@ -428,9 +589,9 @@ export default function GlobalCitizenTrack() {
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/*    PERSONAL RECOMMENDATION    */}
+        {/* PERSONAL RECOMMENDATION */}
         <div
           className="card-gold personal-rec"
           style={{
@@ -440,7 +601,7 @@ export default function GlobalCitizenTrack() {
           }}
         >
           <h4 style={{ marginBottom: "0.75rem" }}>
-            📋 Your Personal Recommendation
+            Your Personal Recommendation
           </h4>
           <p>
             Based on your snapshot, you have{" "}
@@ -465,13 +626,17 @@ export default function GlobalCitizenTrack() {
                 label: "Offshore investment",
                 amount: offshoreMonthly,
                 color: "var(--sage)",
-                pct: Math.round((offshoreMonthly / Math.max(1, disposable)) * 100),
+                pct: Math.round(
+                  (offshoreMonthly / Math.max(1, disposable)) * 100,
+                ),
               },
               {
                 label: "Emergency fund top-up",
                 amount: emergencyMonthly,
                 color: "var(--caramel)",
-                pct: Math.round((emergencyMonthly / Math.max(1, disposable)) * 100),
+                pct: Math.round(
+                  (emergencyMonthly / Math.max(1, disposable)) * 100,
+                ),
               },
             ].map((r) => (
               <div key={r.label} className="rec-item">
@@ -496,82 +661,109 @@ export default function GlobalCitizenTrack() {
               color: "var(--text-muted)",
             }}
           >
-            Total allocation: {formatZAR(totalAllocated)}/month. Remaining discretionary:{" "}
-            {formatZAR(Math.max(0, disposable - totalAllocated))}/month.
+            Total allocation: {formatZAR(totalAllocated)}/month. Remaining
+            discretionary: {formatZAR(Math.max(0, disposable - totalAllocated))}
+            /month.
           </p>
         </div>
 
-        {/*    LIVE SAVINGS PROGRESS    */}
+        {/* LIVE SAVINGS PROGRESS */}
         <div className="card" style={{ marginBottom: "2rem" }}>
-          <h4 style={{ marginBottom: "1.25rem" }}>📊 Your Progress Toward This Vision</h4>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <h4 style={{ marginBottom: "1.25rem" }}>
+            Your Progress Toward This Vision
+          </h4>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             {[
               {
                 label: "Offshore Portfolio",
                 current: profile.savings.offshore,
                 target: 500000,
                 color: "var(--dusty-blue)",
-                tooltip: "Target: R500,000 offshore portfolio over 5 years",
               },
               {
                 label: "TFSA (Lifetime R500k)",
                 current: profile.savings.tfsa,
                 target: 500000,
                 color: "var(--gold)",
-                tooltip: "Annual limit R46,000 , The lifetime limit R500,000",
               },
               {
                 label: "Retirement Annuity",
                 current: profile.savings.ra,
                 target: Math.round(takeHome * 0.1 * 60),
                 color: "var(--sage)",
-                tooltip: "Target: 10% of take-home for 5 years",
               },
               {
                 label: "Emergency Fund (3–6 months)",
                 current: profile.savings.emergencyFund,
                 target: Math.round(takeHome * 3),
                 color: "var(--caramel)",
-                tooltip: "Target: 3 months of take-home pay",
               },
               {
                 label: "Local Investments",
                 current: profile.savings.localInvestments,
                 target: 150000,
                 color: "var(--terracotta)",
-                tooltip: "Supporting target: R150,000 in local ETFs/unit trusts",
               },
             ].map((item) => {
-              const pct = Math.min(100, Math.round((item.current / item.target) * 100));
+              const pct = Math.min(
+                100,
+                Math.round((item.current / item.target) * 100),
+              );
               return (
                 <div key={item.label}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.3rem", fontSize: "0.85rem" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: "0.3rem",
+                      fontSize: "0.85rem",
+                    }}
+                  >
                     <span style={{ fontWeight: 600 }}>{item.label}</span>
                     <span style={{ color: "var(--text-muted)" }}>
-                      {formatZAR(item.current)} / {formatZAR(item.target)} ({pct}%)
+                      {formatZAR(item.current)} / {formatZAR(item.target)} (
+                      {pct}%)
                     </span>
                   </div>
                   <div className="progress-bar-track">
                     <div
                       className="progress-bar-fill"
-                      style={{ width: `${pct}%`, background: item.color, transition: "width 0.4s ease" }}
+                      style={{
+                        width: `${pct}%`,
+                        background: item.color,
+                        transition: "width 0.4s ease",
+                      }}
                     />
                   </div>
                 </div>
               );
             })}
           </div>
-          <p style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
+          <p
+            style={{
+              marginTop: "1rem",
+              fontSize: "0.8rem",
+              color: "var(--text-muted)",
+            }}
+          >
             Update your savings in the{" "}
-            <a href="/snapshot" style={{ color: "var(--dusty-blue)", textDecoration: "underline" }}>
+            <a
+              href="/snapshot"
+              style={{
+                color: "var(--dusty-blue)",
+                textDecoration: "underline",
+              }}
+            >
               Money Snapshot
             </a>{" "}
             and these bars update automatically.
           </p>
         </div>
 
-        {/*    MILESTONES    */}
-        <div className="milestones-section">
+        {/* MILESTONES */}
+        <section className="milestones-section">
           <div className="section-header">
             <span className="eyebrow hand-note">Your 5-year roadmap</span>
             <h2>Milestones</h2>
@@ -580,16 +772,15 @@ export default function GlobalCitizenTrack() {
               track your progress.
             </p>
           </div>
-
           <div className="milestones-list">
             {MILESTONES.map((m, i) => (
               <MilestoneCard key={m.year} milestone={m} index={i} />
             ))}
           </div>
-        </div>
+        </section>
 
-        {/*    NUDGES    */}
-        <div className="nudges-section">
+        {/* NUDGES */}
+        <section className="nudges-section">
           <h3 style={{ marginBottom: "1rem" }}>Your Vision Nudges</h3>
           <div className="nudges-grid">
             {NUDGES.map((n, i) => (
@@ -599,19 +790,19 @@ export default function GlobalCitizenTrack() {
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/*    SA CONTEXT BOX    */}
+        {/* SA CONTEXT */}
         <div className="sa-context-box card" style={{ marginTop: "2rem" }}>
           <h4 style={{ marginBottom: "1rem" }}>
-            🇿🇦 Key South African Context for This Track
+            Key South African Context for This Track
           </h4>
           <div className="sa-context-grid">
             {[
               {
                 title: "TFSA Annual Limit",
                 detail:
-                  "R46,000 per tax year (from 1 March 2026). Lifetime limit: R500,000. Over-contributing results in a 40% penalty tax. New limit is confirmed by SARS annually.",
+                  "R46,000 per tax year (from 1 March 2026). Lifetime limit: R500,000. Over-contributing results in a 40% penalty tax.",
               },
               {
                 title: "RA Contribution Limit",
@@ -621,7 +812,7 @@ export default function GlobalCitizenTrack() {
               {
                 title: "Offshore Allowance",
                 detail:
-                  "Discretionary: R1.1 million per year (no SARB approval needed). Single Discretionary: R1 million for travel/gifts combined. Over R10M requires SARB approval.",
+                  "Discretionary: R1.1 million per year (no SARB approval needed). Over R10M requires SARB approval.",
               },
               {
                 title: "Dividends Withholding Tax",
@@ -639,7 +830,7 @@ export default function GlobalCitizenTrack() {
           </div>
         </div>
 
-        {/*    CTA    */}
+        {/* CTA */}
         <div className="track-cta">
           <div>
             <h3>Ready to simulate the big decisions?</h3>
@@ -653,6 +844,6 @@ export default function GlobalCitizenTrack() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
