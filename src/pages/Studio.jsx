@@ -19,7 +19,7 @@ const STUDIOS = [
   {
     id: "car-comparison",
     path: "/studio/car-comparison",
-    icon: <Car size={24} />,
+    icon: <img src="../public/used-luxury.jpg" alt="Used vs Luxury Car" />,
     title: "Luxury Car vs Used Car",
     subtitle:
       "Finance a R600k luxury car or buy used and invest the difference?",
@@ -34,7 +34,7 @@ const STUDIOS = [
   {
     id: "rent-vs-buy",
     path: "/studio/rent-vs-buy",
-    icon: <Home size={24} />,
+    icon: <img src="../public/rent-buy.png" alt="Rent vs Buy" />,
     title: "Rent vs Buy in South Africa",
     subtitle:
       "Is owning a home actually better than renting in Johannesburg or Cape Town?",
@@ -49,7 +49,12 @@ const STUDIOS = [
   {
     id: "offshore-allocation",
     path: "/studio/offshore-allocation",
-    icon: <Globe size={24} />,
+    icon: (
+      <img
+        src="../public/local-offshore.png"
+        alt="Local vs Offshore Allocation"
+      />
+    ),
     title: "Local vs Offshore Allocation",
     subtitle:
       "How much of your portfolio should be offshore? Model the Rand impact.",
