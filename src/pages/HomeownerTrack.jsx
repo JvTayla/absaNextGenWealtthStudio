@@ -443,7 +443,6 @@ export default function HomeownerTrack() {
                   {icon}
                 </div>
               ))}
-              <div className="moodboard-label hand-note">home</div>
             </div>
           </div>
         </div>

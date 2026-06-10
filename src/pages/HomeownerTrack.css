@@ -12,12 +12,10 @@
 
 /* Moodboard red tint */
 .ho-moodboard {
-  background: linear-gradient(
-    135deg,
-    var(--absa-red-light),
-    var(--cream-dark)
-  ) !important;
-}
+  background: url("/homeowner.png");
+  background-size: cover;
+  background-position: center;  
+} 
 
 /* Rec card red accent override */
 .ho-rec {
@@ -70,7 +68,6 @@
 
 /* Goal detail border  red for homeowner */
 .ho-moodboard ~ .milestone-body .goal-detail {
-  border-left-color: var(--absa-red);
 }
 
 @media (max-width: 600px) {

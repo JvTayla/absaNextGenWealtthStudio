@@ -401,7 +401,6 @@ export default function BalancedTrack() {
                   {e}
                 </div>
               ))}
-              <div className="moodboard-label hand-note">balance</div>
             </div>
           </div>
         </div>

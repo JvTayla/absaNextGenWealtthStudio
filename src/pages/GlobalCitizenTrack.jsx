@@ -201,7 +201,7 @@ const MILESTONES = [
   },
 ];
 
-//    5-YEAR TIMELINE STRIP   
+//    5-YEAR TIMELINE STRIP
 const TIMELINE_MILESTONES = [
   {
     year: 1,
@@ -548,7 +548,6 @@ export default function GlobalCitizenTrack() {
                   {icon}
                 </div>
               ))}
-              <div className="moodboard-label hand-note">freedom</div>
             </div>
           </div>
         </header>

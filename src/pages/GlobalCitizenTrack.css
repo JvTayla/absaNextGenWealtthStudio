@@ -63,7 +63,9 @@
 .moodboard {
   width: 280px;
   height: 280px;
-  background: linear-gradient(135deg, var(--cream-dark), var(--parchment));
+  background: url("/global.png");
+  background-size: cover;
+  background-position: center;
   border-radius: var(--radius-xl);
   border: 2px solid var(--border);
   position: relative;

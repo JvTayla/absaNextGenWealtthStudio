@@ -10,7 +10,7 @@ const TRACKS = [
   {
     id: "global-citizen",
     name: "The Global Citizen Vision",
-    emoji: "✈",
+    image: <img src="/global.png" alt="Global Citizen Vision" />,
     tagline: "Build offshore wealth. Create location-independent income.",
     description:
       "For young professionals who value flexibility and global exposure. This track prioritises offshore investing, TFSA maximisation, RA tax efficiency, and building wealth that travels with you regardless of what the Rand does.",
@@ -32,7 +32,7 @@ const TRACKS = [
   {
     id: "homeowner",
     name: "The Homeowner's Vision",
-    emoji: "🏠",
+    image: <img src="/homeowner.png" alt="Homeowner's Vision" />,
     tagline: "Own your first home within 3–5 years.",
     description:
       "This track is built for young professionals who want to stop renting and build equity. It structures your first five years around deposit saving, credit improvement, and understanding the true costs of property ownership in South Africa.",
@@ -54,7 +54,7 @@ const TRACKS = [
   {
     id: "balanced",
     name: "The Balanced Wealth Vision",
-    emoji: "⚖",
+    image: <img src="/balanced.png" alt="Balanced Wealth Vision" />,
     tagline: "Do it all. Pay debt, build security, start investing.",
     description:
       "For professionals who have multiple financial priorities and don't want to sacrifice one dream for another. This track sequences goals : debt first, then emergency fund, then investing , so you build a resilient financial foundation.",
@@ -109,7 +109,7 @@ export default function Tracks() {
               )}
 
               <div className="track-header" style={{ background: track.bg }}>
-                <div className="track-emoji">{track.emoji}</div>
+                <div className="track-image">{track.image}</div>
                 <h3 className="track-name">{track.name}</h3>
                 <p className="track-tagline" style={{ color: track.color }}>
                   {track.tagline}
