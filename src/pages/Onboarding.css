@@ -1,5 +1,5 @@
 /*                                                                                           
-   Onboarding.css — clean single card, no bubbles
+   Onboarding.css  clean single card, no bubbles
    Plain warm background, scrapbook card styling
                                                                                            */
 
@@ -292,7 +292,7 @@
   margin-bottom: 1.25rem;
 }
 
-/* PAYE table — plain, not a bubble */
+/* PAYE table  plain, not a bubble */
 .ob-paye-table {
   background: var(--cream-dark);
   border: 1.5px solid var(--border);
@@ -679,7 +679,7 @@
   justify-content: center;
 }
 
-/* Finish button — normal size, not huge */
+/* Finish button  normal size, not huge */
 .ob-finish-btn {
   min-width: 200px;
   justify-content: center;
@@ -722,7 +722,7 @@
     width: 100px;
   }
 }
-/* ===== STEP 5 NARRATIVE CARD ===== */
+/*    STEP 5 NARRATIVE CARD    */
 .ob-narrative-card {
   background: var(--cream-dark);
   border-left: 3px solid var(--absa-red);

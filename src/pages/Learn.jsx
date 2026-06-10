@@ -436,7 +436,7 @@ export default function Learn() {
 
         {/* Deeper learning callout */}
 
-        {/* ===== PLATFORM COMPARISON TABLE ===== */}
+        {/*    PLATFORM COMPARISON TABLE    */}
         <section
           className="learn-platform-section"
           style={{ marginTop: "3rem" }}
@@ -555,7 +555,7 @@ export default function Learn() {
           </p>
         </section>
 
-        {/* ===== GLOSSARY ===== */}
+        {/*    GLOSSARY    */}
         <section
           className="learn-glossary-section"
           style={{ marginTop: "3rem" }}
@@ -599,11 +599,11 @@ export default function Learn() {
               },
               {
                 term: "FIRE",
-                def: 'Financial Independence, Retire Early. Based on the "4% rule" — if your portfolio equals 25× annual expenses, you can theoretically withdraw 4% per year indefinitely.',
+                def: 'Financial Independence, Retire Early. Based on the "4% rule"  if your portfolio equals 25× annual expenses, you can theoretically withdraw 4% per year indefinitely.',
               },
               {
                 term: "Marginal Tax Rate",
-                def: "The tax rate applied to your last rand of income — not your average rate. In SA, the top marginal rate is 45% (income above R1.73M). Most professionals fall in the 36–41% bracket.",
+                def: "The tax rate applied to your last rand of income  not your average rate. In SA, the top marginal rate is 45% (income above R1.73M). Most professionals fall in the 36–41% bracket.",
               },
               {
                 term: "Money Market Account",
@@ -611,11 +611,11 @@ export default function Learn() {
               },
               {
                 term: "Provident Fund",
-                def: "A workplace retirement savings vehicle. Unlike an RA, contributions were once not taxable — this changed in 2021. Funds are locked in until retirement or resignation.",
+                def: "A workplace retirement savings vehicle. Unlike an RA, contributions were once not taxable  this changed in 2021. Funds are locked in until retirement or resignation.",
               },
               {
                 term: "Rand-Hedged",
-                def: "Investments that naturally protect against Rand weakness — usually companies that earn foreign revenue (like Naspers/Prosus, BHP, Anglo American). Useful without moving money offshore.",
+                def: "Investments that naturally protect against Rand weakness  usually companies that earn foreign revenue (like Naspers/Prosus, BHP, Anglo American). Useful without moving money offshore.",
               },
               {
                 term: "Repo Rate",

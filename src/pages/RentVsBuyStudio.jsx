@@ -291,10 +291,10 @@ export default function RentVsBuyStudio() {
         label: "Renting + Investing Wins",
         color: "var(--dusty-blue)",
         icon: <TrendingUp size={18} />,
-        text: `Over ${inputs.timeHorizon} years, renting and investing your deposit builds ${formatZARShort(results.difference)} more wealth than buying. The high upfront costs — transfer duty ${formatZARShort(results.transferDuty)} plus fees — haven't been recovered through property growth in this timeframe.`,
+        text: `Over ${inputs.timeHorizon} years, renting and investing your deposit builds ${formatZARShort(results.difference)} more wealth than buying. The high upfront costs  transfer duty ${formatZARShort(results.transferDuty)} plus fees  haven't been recovered through property growth in this timeframe.`,
         sub: results.breakEvenYear
           ? `Buying becomes the stronger choice at approximately Year ${results.breakEvenYear}. If you plan to stay for ${results.breakEvenYear}+ years, the calculus changes significantly.`
-          : `Consider extending the time horizon — property typically outperforms over 10–15 year periods.`,
+          : `Consider extending the time horizon  property typically outperforms over 10–15 year periods.`,
       };
 
   const TABS = [
@@ -317,12 +317,12 @@ export default function RentVsBuyStudio() {
     {
       icon: <TrendingUp size={20} />,
       title: "Opportunity Cost of Deposit",
-      text: "Your deposit is not free money just because you own it. Invested in an ETF at 9–10% p.a., R300,000 becomes approximately R462,000 after 5 years. When placed into a property instead, you forgo this growth — the model accounts for this explicitly.",
+      text: "Your deposit is not free money just because you own it. Invested in an ETF at 9–10% p.a., R300,000 becomes approximately R462,000 after 5 years. When placed into a property instead, you forgo this growth  the model accounts for this explicitly.",
     },
     {
       icon: <Key size={20} />,
       title: "Rental Inflation",
-      text: "South African landlords typically increase rent 6–10% annually. Rent that looks affordable today can become expensive quickly. A R15,000 rent at 7% annual increase costs R21,000 in 5 years and R29,500 in 10 years — a key argument for buying long-term.",
+      text: "South African landlords typically increase rent 6–10% annually. Rent that looks affordable today can become expensive quickly. A R15,000 rent at 7% annual increase costs R21,000 in 5 years and R29,500 in 10 years  a key argument for buying long-term.",
     },
   ];
 
@@ -344,8 +344,8 @@ export default function RentVsBuyStudio() {
               <h1>Rent vs Buy in South Africa</h1>
               <p className="studio-subtitle">
                 One of the biggest financial decisions you'll ever make. This
-                studio runs the real SA numbers — transfer duty, bond rates,
-                levies, rental inflation — and tells you which position builds
+                studio runs the real SA numbers  transfer duty, bond rates,
+                levies, rental inflation  and tells you which position builds
                 more wealth over your chosen horizon.
               </p>
             </div>
@@ -840,7 +840,7 @@ export default function RentVsBuyStudio() {
               )}
             </div>
 
-            {/* ===== WEALTH PROJECTION CHART ===== */}
+            {/*  WEALTH PROJECTION CHART  */}
             <section
               className="card rvb-chart-section"
               style={{ padding: "1.5rem", marginTop: "1rem" }}
@@ -1028,7 +1028,7 @@ export default function RentVsBuyStudio() {
                 SA bond rates are prime-linked (currently 11.5%). Property has
                 grown 5–7% p.a. nationally, with Cape Town outperforming at
                 8–10% in recent years. Transfer duty on a R1.8M property is
-                R26,900 — one of the largest hidden costs first-time buyers
+                R26,900  one of the largest hidden costs first-time buyers
                 overlook. Always model the full upfront cash requirement before
                 making an offer.
               </p>

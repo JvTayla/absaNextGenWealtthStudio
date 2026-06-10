@@ -226,7 +226,7 @@ function buildNudges(profile, takeHome, disposable) {
       icon: <Home size={20} />,
       text: monthsToDeposit
         ? `Saving ${formatZAR(monthlySavingCapacity)}/month, you could reach a R300,000 deposit in approximately ${monthsToDeposit} months. This is your Year 2 target.`
-        : `Build up your savings capacity first — your current disposable income is tight. Review your fixed costs in the Snapshot.`,
+        : `Build up your savings capacity first  your current disposable income is tight. Review your fixed costs in the Snapshot.`,
     },
     {
       icon: <BarChart2 size={20} />,
@@ -238,7 +238,7 @@ function buildNudges(profile, takeHome, disposable) {
     },
     {
       icon: <Star size={20} />,
-      text: `Transfer duty on a R1.8M property is R26,900. Add R35,000 in attorney fees and you need ${formatZAR(depositTarget + 61900)} total upfront — plan this into your savings target from Year 2.`,
+      text: `Transfer duty on a R1.8M property is R26,900. Add R35,000 in attorney fees and you need ${formatZAR(depositTarget + 61900)} total upfront  plan this into your savings target from Year 2.`,
     },
   ];
 }

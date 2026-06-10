@@ -273,7 +273,7 @@
   }
 }
 
-/* ===== PLATFORM COMPARISON TABLE ===== */
+/*    PLATFORM COMPARISON TABLE    */
 .learn-section-header {
   margin-bottom: 1.5rem;
 }
@@ -331,7 +331,7 @@
   font-weight: 700;
 }
 
-/* ===== GLOSSARY ===== */
+/*    GLOSSARY    */
 .glossary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

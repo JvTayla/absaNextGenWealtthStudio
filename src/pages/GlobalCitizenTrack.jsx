@@ -201,7 +201,7 @@ const MILESTONES = [
   },
 ];
 
-// ===== 5-YEAR TIMELINE STRIP =====
+//    5-YEAR TIMELINE STRIP   
 const TIMELINE_MILESTONES = [
   {
     year: 1,
@@ -270,7 +270,7 @@ function TimelineStrip({ completions }) {
                       ? `${m.color}33`
                       : "var(--bg-card)",
                 }}
-                aria-label={`Year ${m.year}: ${m.label} — ${pct}% complete`}
+                aria-label={`Year ${m.year}: ${m.label}  ${pct}% complete`}
               >
                 {done ? (
                   <CheckCircle size={16} color="white" />

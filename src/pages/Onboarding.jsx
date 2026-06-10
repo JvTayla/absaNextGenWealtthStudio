@@ -729,9 +729,9 @@ export default function Onboarding() {
               </div>
               <p className="ob-narrative-text">
                 {disposable >= takeHome * 0.35
-                  ? `You're in a strong position — ${Math.round((disposable / takeHome) * 100)}% of your take-home is available to put to work. At your income level, the biggest risk isn't spending too much, it's leaving too much in a low-interest account. The ${activeTrack?.name} vision is designed for exactly this situation.`
+                  ? `You're in a strong position  ${Math.round((disposable / takeHome) * 100)}% of your take-home is available to put to work. At your income level, the biggest risk isn't spending too much, it's leaving too much in a low-interest account. The ${activeTrack?.name} vision is designed for exactly this situation.`
                   : disposable >= 0
-                    ? `Your spending takes up ${Math.round(((takeHome - disposable) / takeHome) * 100)}% of your take-home, leaving ${formatZAR(disposable)}/month to build wealth with. That's a workable foundation — the Studio will show you how to make it compound.`
+                    ? `Your spending takes up ${Math.round(((takeHome - disposable) / takeHome) * 100)}% of your take-home, leaving ${formatZAR(disposable)}/month to build wealth with. That's a workable foundation  the Studio will show you how to make it compound.`
                     : `Your current spending exceeds your take-home by ${formatZAR(Math.abs(disposable))}. This is worth fixing before investing. The Snapshot will flag exactly where the pressure is coming from.`}
               </p>
             </div>

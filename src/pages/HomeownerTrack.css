@@ -6,7 +6,7 @@
 
 /* Re-use all track-detail-page, milestone, goal, nudge, 
    sa-context, track-cta styles from GlobalCitizenTrack.css
-   — those class names are shared via global.css and 
+    those class names are shared via global.css and 
    GlobalCitizenTrack.css which is already loaded.
    This file adds Homeowner-specific overrides only. */
 
@@ -68,7 +68,7 @@
   background: var(--cream);
 }
 
-/* Goal detail border — red for homeowner */
+/* Goal detail border  red for homeowner */
 .ho-moodboard ~ .milestone-body .goal-detail {
   border-left-color: var(--absa-red);
 }
