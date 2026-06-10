@@ -14,8 +14,8 @@
 .ho-moodboard {
   background: url("/homeowner.png");
   background-size: cover;
-  background-position: center;  
-} 
+  background-position: center;
+}
 
 /* Rec card red accent override */
 .ho-rec {
@@ -66,9 +66,6 @@
   background: var(--cream);
 }
 
-/* Goal detail border  red for homeowner */
-.ho-moodboard ~ .milestone-body .goal-detail {
-}
 
 @media (max-width: 600px) {
   .ho-duty-header,

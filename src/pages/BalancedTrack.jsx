@@ -2,6 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../context/UserProfileContext";
 import { formatZAR, futureValue } from "../utils/finance";
+import {
+  Scale,
+  WalletCards,
+  Shield,
+  ChartSpline,
+  Sprout,
+  Goal,
+} from "lucide-react";
 import "./BalancedTrack.css";
 
 // Balanced Wealth Track helps users with debt elimination and then works toward an emergency fund and then toward investing
@@ -354,6 +362,14 @@ export default function BalancedTrack() {
     futureValue(profile.savings.ra || 0, raAlloc, 0.09, 5),
   );
   const emergencyTarget = Math.round(takeHome * 6);
+  const MOODBOARD_ICONS = [
+    <Scale size={22} />,
+    <WalletCards size={22} />,
+    <Shield size={22} />,
+    <ChartSpline size={22} />,
+    <Goal size={22} />,
+    <Shield size={22} />,
+  ];
 
   return (
     <div className="track-detail-page">
@@ -394,15 +410,16 @@ export default function BalancedTrack() {
             </div>
           </div>
 
-          <div className="track-hero-visual">
-            <div className="moodboard bw-moodboard">
-              {["⚖", "💳", "🛡", "📈", "🌱", "🎯"].map((e, i) => (
+          <div className="track-hero-visual" aria-hidden="true">
+            <div className="moodboard">
+              {MOODBOARD_ICONS.map((icon, i) => (
                 <div key={i} className={`moodboard-tile moodboard-${i}`}>
-                  {e}
+                  {icon}
                 </div>
               ))}
             </div>
           </div>
+
         </div>
 
         {/*    PHILOSOPHY    */}
@@ -561,7 +578,7 @@ export default function BalancedTrack() {
                 color: "var(--gold)",
               },
               {
-                icon: "📈",
+                icon: "",
                 label: "TFSA balance",
                 value: formatZAR(tfsaFV5),
                 sub: "Tax-free at 10% p.a.",
