@@ -1,6 +1,6 @@
 ABSA NextGen Wealth Studio
 
-##Overview
+## Overview
 
 ABSA NextGen Wealth Studio is a financial planning and wealth management prototype designed to help young professionals and graduates make informed financial decisions as they enter higher earning stages of their careers.
 
